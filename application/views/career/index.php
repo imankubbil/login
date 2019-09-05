@@ -77,17 +77,18 @@
              <!-- /.container-fluid -->
 
              <div class="modal fade" id="modal_lanjut_psikotest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-md" role="document">
-                    <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <p class="text-center"><code><strong>Berkas Lamaran Anda Telah Terkirim</strong></code></p>
-                                <a href="<?= base_url('career/exam'); ?>" class="btn btn-primary btn-block" title="lanjutkan" id="name">Lanjutkan, Untuk Psikotest</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                 <div class="modal-dialog modal-md" role="document">
+                     <div class="modal-content">
+                         <div class="modal-body">
+                             <div class="row">
+                                 <div class="col-sm-12">
+                                     <p class="text-center"><code><strong>Berkas Lamaran Anda Telah Terkirim</strong></code></p>
+                                     <p class="text-center"><code><strong>Siapkan Diri Anda Untuk Melakukan Psikotest</strong></code></p>
+                                     <a href="<?= base_url('career/exam'); ?>" class="btn btn-primary btn-block" title="lanjutkan" id="name">Lanjutkan, Untuk Psikotest</a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
              </div>
              <!-- End of Main Content -->
