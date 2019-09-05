@@ -82,8 +82,8 @@
                          <div class="modal-body">
                              <div class="row">
                                  <div class="col-sm-12">
-                                     <p class="text-center"><code><strong>Berkas Lamaran Anda Telah Terkirim</strong></code></p>
-                                     <p class="text-center"><code><strong>Siapkan Diri Anda Untuk Melakukan Psikotest</strong></code></p>
+                                     <p class="text-center" style="color: blue;"><strong>Berkas Lamaran Anda Telah Terkirim</strong></p>
+                                     <p class="text-center"><code><strong>Siapkan Diri Anda Untuk Melakukan Psikotest!!</strong></code></p>
                                      <a href="<?= base_url('career/exam'); ?>" class="btn btn-primary btn-block" title="lanjutkan" id="name">Lanjutkan, Untuk Psikotest</a>
                                  </div>
                              </div>

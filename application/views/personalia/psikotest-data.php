@@ -38,8 +38,10 @@
                 <td><?= $d['date_created']; ?></td>
                 
                 <td>
-                  <a href="" class="badge badge-success">Detail</a>
-                  <a href="" class="badge badge-danger">Ubah</a>
+                  <a href="<?= base_url(); ?>Personalia/detailPsikotest/<?= $d['id_question']; ?>" class="badge badge-success">Detail</a>
+                  <a href="" class="badge badge-warning">Ubah</a>
+                  <a href="" class="badge badge-danger">Hapus</a>
+
                 </td>
               </tr>
               <?php $i++ ?>

@@ -18,7 +18,7 @@
                                             echo '  <ul class="list-group list-group-flush">
                                                             <li class="list-group-item">
                                                                 <div class="form-check">
-                                                                    <input type="radio" name="' . $no . '-jawaban" class="form-check-input" id="' . $jwb['id_question'] . $jwb['urutan'] . '" value="' . $jwb['id_answer'] . '-' . $jwb['id_question'] . '-' . $jwb['urutan'] . '">
+                                                                    <input type="radio" name="' . $no . 'jawaban" class="form-check-input" id="' . $jwb['id_question'] . $jwb['urutan'] . '" value="' . $jwb['id_answer'] . '-' . $jwb['id_question'] . '-' . $jwb['urutan'] . '">
                                                                     <label class="form-check-label" for="' . $jwb['id_question'] . $jwb['urutan'] . '">' . $jwb['urutan'] . '. ' . $jwb['jawaban'] . '</label>
                                                                 </div>
                                                             </li>

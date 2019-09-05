@@ -71,4 +71,10 @@ class Personalia_model extends CI_Model
 
 
 	}
+
+	public function getPsikotestById($id)
+	{
+		 $this->db->where('id_question', $id);
+        return $this->db->get_where('question')->row_array();
+	}
 }
