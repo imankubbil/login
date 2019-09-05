@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class personalia extends CI_Controller
+class Personalia extends CI_Controller
 {
 
 	public function __construct()
     {
         parent::__construct();
-        $this->load->model('personalia_model');
+        $this->load->model('Personalia_model');
         is_logged_in();
     }
 
@@ -33,7 +33,7 @@ class personalia extends CI_Controller
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
         // echo 'Selamat Datang ' . $data['user']['name'];
 
-         $data['data'] = $this->personalia_model->psikotestData();
+         $data['data'] = $this->Personalia_model->psikotestData();
 
          // echo json_encode($data);
          // die();
@@ -70,7 +70,7 @@ class personalia extends CI_Controller
             $this->load->view('personalia/add-psikotest', $data);
             $this->load->view('templates/footer'); 
         }else {
-            $result = $this->personalia_model->addPsikotest($data['user']['name']);
+            $result = $this->Personalia_model->addPsikotest($data['user']['name']);
             if ($result > 0) {
                 $this->session->set_flashdata('message', 'Has Been Sent');
                 // $this->session->set_flashdata('show', 'tampil data edit');
@@ -83,16 +83,17 @@ class personalia extends CI_Controller
 
     }
 
-    public function detailPsikotest()
+    public function detailPsikotest($id)
     {
          $data['title'] = 'Detail Psikotest Data';
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
 
-        $data['psikotest'] = $this->Personalia_model->getPsikotestById($id);
+        $data['data'] = $this->Personalia_model->getPsikotestById($id);
 
-        print_r($psikotest);
-        die();
+        // echo json_encode($data);
+        // die();
+        
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
