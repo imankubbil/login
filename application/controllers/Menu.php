@@ -65,7 +65,6 @@ class Menu extends CI_Controller
     public function menuDelete($id)
     {
             
-
         $this->db->where('id', $id);
         $this->db->delete('user_menu');
         $this->session->set_flashdata('message', 'Menu dihapus');

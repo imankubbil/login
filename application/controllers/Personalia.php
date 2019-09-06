@@ -101,4 +101,26 @@ class Personalia extends CI_Controller
             $this->load->view('personalia/detail-psikotest', $data);
             $this->load->view('templates/footer'); 
     }
+
+    public function editPsikotest($id)
+    {
+        $data['title'] = 'Edit Psikotest Data';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+        $data['data'] = $this->Personalia_model->getPsikotestById($id);
+
+        // echo json_encode($data);
+        // die();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('personalia/edit-psikotest', $data);
+            $this->load->view('templates/footer');
+    }
+
+    public function deletePsikotest()
+    {
+        
+    }
 }
