@@ -13,24 +13,16 @@
                 <tr>
 
                  <td>Pertanyaan</td>
-                 <!-- <td><?= $question['question']; ?></td> -->
+                 <td><?= $data['question']; ?></td>
                </tr>
              </thead>
              <tbody>
-              <?php $i = 1; ?>
-              <?php foreach ($data as $ques) : ?>
-               <tr>
-                <th scope="row"><?= $i; ?></th>
-              </tr>
-              <tr>
-                <th><?= $ques['question']; ?></th>
-              </tr>
-              <tr>
-                <th><?= $ques['jawaban']; ?></th> 
-              </tr>
-
-              <?php $i++ ?>
-            <?php endforeach; ?>
+              <?php $i = 1; foreach ($data['answer'] as $ques) : ?>
+                <tr>
+                  <th scope="row" <?php if ($ques['status'] == 1) { echo 'style="color:teal"';}?>><?= $ques['urutan']; ?></th>
+                  <th <?php if ($ques['status'] == 1) { echo 'style="color:teal"';}?>><?= $ques['jawaban']; ?></th> 
+                </tr>
+              <?php $i++; endforeach; ?>
           </tbody>
           </table><br>
 
