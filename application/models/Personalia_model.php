@@ -74,16 +74,11 @@ class Personalia_model extends CI_Model
 
 	public function getPsikotestById($id)
 	{
+		$question_by_id = $this->db->select('*')->from('question')->where('id_question', $id)->get()->row_array();
+		$answer_by_id_question = $this->db->select('*')->from('answer')->where('id_question', $question_by_id['id_question'])->get()->result_array();
+		$data['question'] = $question_by_id['question'];
+		$data['answer'] = $answer_by_id_question;
 
-		//  $query = $this->db->select('*')->from('question')->join('answer', 'question.id_question = answer.id_question')->where('answer.id_question = question.id_question ')->order_by('question.id_question', 'DESC')->get()->result_array();
-		// return $query;
-		
-		$query = $this->db->distinct()->select('*')->from('question')->join('answer', 'question.id_question = answer.id_question')->where('answer.id_question', $id)->order_by('question.id_question', 'DESC')->get()->result_array();
-		return $query;
-
-		 $this->db->where('id_question', $id);
-        return $this->db->get_where('question')->row_array();
-
-
+		return $data;
 	}
 }

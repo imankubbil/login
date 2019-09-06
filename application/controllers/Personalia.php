@@ -91,8 +91,8 @@ class Personalia extends CI_Controller
 
         $data['data'] = $this->Personalia_model->getPsikotestById($id);
 
-        // echo json_encode($data);
-        // die();
+        echo json_encode($data);
+        die();
         
 
             $this->load->view('templates/header', $data);
