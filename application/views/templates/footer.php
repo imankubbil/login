@@ -51,7 +51,9 @@
 <script src="<?= base_url('assets/'); ?>js/boostrap-datepicker.js"></script>
 <script src="<?= base_url('assets/'); ?>swal/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/script.js"></script>
+<!-- <script src="<?= base_url('assets/');?>js/jquery-3.4.1.min.js"></script> -->
 <script src="<?= base_url('assets/js/dataTables/datatables.min.js') ?>"></script>
+
 
 <script>
   $(document).ready( function () {

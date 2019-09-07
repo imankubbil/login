@@ -5,30 +5,34 @@
                    <div class="card">
                        <div class="card-body">
                            <?= form_open('career/exam'); ?>
+                           <?php echo validation_errors(); ?>
                            <ul class="list-group list-group-flush">
                                <input type="text" name="email" value="<?= $user['email'] ?>" hidden>
                                <input type="text" name="count" value="<?= $count_question ?>" hidden>
                                <?php $no = 1;
                                 foreach ($question as $ques) : ?>
-                                   <li class="list-group-item"><?= $no ?>.) <?= $ques['question'] ?></li>
+                                  <br>
+                                  <li class="list-group"><strong><?= $no ?>.) <?= $ques['question'] ?></strong></li>
+                                  <br>
                                    <?php
                                         $CI = &get_instance();
                                         $jawaban = $CI->db->get_where('answer', ['id_question' => $ques['id_question']])->result_array();
                                         foreach ($jawaban as $jwb) {
-                                            echo '  <ul class="list-group list-group-flush">
-                                                            <li class="list-group-item">
-                                                                <div class="form-check">
-                                                                    <input type="radio" name="' . $no . 'jawaban" class="form-check-input" id="' . $jwb['id_question'] . $jwb['urutan'] . '" value="' . $jwb['id_answer'] . '-' . $jwb['id_question'] . '-' . $jwb['urutan'] . '">
-                                                                    <label class="form-check-label" for="' . $jwb['id_question'] . $jwb['urutan'] . '">' . $jwb['urutan'] . '. ' . $jwb['jawaban'] . '</label>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
+                                            echo '  <li class="list-group-item"> 
+                                                      <ul class="list-group list-group-flush">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" name="' . $no . '-jawaban" class="form-check-input" id="' . $jwb['id_question'] . $jwb['urutan'] . '" value="' . $jwb['id_answer'] . '-' . $jwb['id_question'] . '-' . $jwb['urutan'] . '">
+                                                            <label class="form-check-label" for="' . $jwb['id_question'] . $jwb['urutan'] . '">' . $jwb['urutan'] . '. ' . $jwb['jawaban'] . '</label>
+                                                        </div>
+                                                      </ul>
+                                                    </li>
                                                     ';
                                         }
                                         ?>
                                <?php $no++;
                                 endforeach; ?>
                            </ul>
+                           <br>
                            <button type="submit" class="btn btn-primary">Simpan</button>
                            <?= form_close(); ?>
                        </div>

@@ -19,8 +19,8 @@
              <tbody>
               <?php $i = 1; foreach ($data['answer'] as $ques) : ?>
                 <tr>
-                  <th scope="row" <?php if ($ques['status'] == 1) { echo 'style="color:teal"';}?>><?= $ques['urutan']; ?></th>
-                  <th <?php if ($ques['status'] == 1) { echo 'style="color:teal"';}?>><?= $ques['jawaban']; ?></th> 
+                  <th scope="row" <?php if ($ques['status'] == 1) { echo 'style="color:blue"';}?>><?= $ques['urutan']; ?></th>
+                  <th <?php if ($ques['status'] == 1) { echo 'style="color:blue"';}?>><?= $ques['jawaban']; ?></th> 
                 </tr>
               <?php $i++; endforeach; ?>
           </tbody>

@@ -515,6 +515,10 @@ class Career extends CI_Controller
 
             $data['count_question']     = count($data['question']);
 
+            $time = time();
+            echo $time;
+            die();
+
             $this->form_validation->set_rules('email', 'Email', 'trim|required');
             $this->form_validation->set_rules('count', 'Count', 'trim|required');
             for ($i=1; $i <= $data['count_question']; $i++) { 
@@ -528,6 +532,8 @@ class Career extends CI_Controller
                 $this->load->view('psikotest/exam-view', $data);
                 $this->load->view('templates/footer');
             } else {
+                echo json_encode($this->input->post());
+                die();
                 $count = $this->input->post('count', TRUE);
 
                 $data_get_submit = [];

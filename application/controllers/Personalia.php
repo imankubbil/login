@@ -137,6 +137,16 @@ class Personalia extends CI_Controller
 
     public function deletePsikotest()
     {
-        
+        $id = $this->uri->segment(3);
+
+        $result = $this->Personalia_model->deletePsikotest($id);
+
+       if ($result > 0) {
+            $this->session->set_flashdata('message', 'Has Been Deleted');
+            // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Deleted');
+            }
+            redirect('personalia/psikotestData');
     }
 }

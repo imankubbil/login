@@ -83,8 +83,20 @@ class Personalia_model extends CI_Model
 
 	}
 
-	public function editPsikotest()
-	{
-		
+	public function deletePsikotest($id)
+	{	
+		$this->db->where('id_question', $id);
+		$delete_question = $this->db->delete('question');
+		if ($delete_question > 0) {
+			$this->db->where('id_question', $id);
+			$delete_answer = $this->db->delete('answer');
+			if ($delete_answer > 0) {
+				return 1;
+			} else {
+				return 0;
+			}
+		} else {
+			return 0;
+		}
 	}
 }

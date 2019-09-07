@@ -39,8 +39,8 @@
                 
                 <td>
                   <a href="<?= base_url(); ?>Personalia/detailPsikotest/<?= $d['id_question']; ?>" class="badge badge-success">Detail</a>
-                  <a href="<?= base_url(); ?>Personalia/editPsikotest/<?= $d['id_question']; ?>" class="badge badge-warning">Edit</a>
-                  <a href="" class="badge badge-danger">Delete</a>
+                  <!-- <a href="<?= base_url(); ?>Personalia/editPsikotest/<?= $d['id_question']; ?>" class="badge badge-warning">Edit</a>
+ -->                  <a href="<?= base_url(); ?>Personalia/deletePsikotest/<?= $d['id_question']; ?>" class="badge badge-danger">Delete</a>
 
                 </td>
               </tr>
