@@ -80,5 +80,11 @@ class Personalia_model extends CI_Model
 		$data['answer'] = $answer_by_id_question;
 
 		return $data;
+
+	}
+
+	public function editPsikotest()
+	{
+		
 	}
 }

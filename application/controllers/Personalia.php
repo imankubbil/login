@@ -17,7 +17,7 @@ class Personalia extends CI_Controller
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
        
-        $data['data'] = $this->personalia_model->getData();
+        $data['data'] = $this->Personalia_model->getData();
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -98,8 +98,9 @@ class Personalia extends CI_Controller
             $this->load->view('templates/footer'); 
     }
 
-    public function editPsikotest($id)
+    public function editPsikotest()
     {
+        $id = $this->uri->segment(3);
         $data['title'] = 'Edit Psikotest Data';
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
@@ -108,11 +109,30 @@ class Personalia extends CI_Controller
         // echo json_encode($data);
         // die();
 
+       $this->form_validation->set_rules('question', 'Pertanyaan', 'required');
+       $this->form_validation->set_rules('a[]', 'Urutan', 'required');
+       $this->form_validation->set_rules('jawaban[]', 'Jawaban', 'required');
+
+
+         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('personalia/edit-psikotest', $data);
             $this->load->view('templates/footer');
+        } else {
+            echo json_encode($this->input->post());
+            die();
+
+            $result = $this->Personalia_model->editPsikotest();
+            if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Updated');
+                $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Updated');
+            }
+            redirect('personalia/psikotestData');
+        }
     }
 
     public function deletePsikotest()
