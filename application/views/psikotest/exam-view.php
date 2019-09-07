@@ -1,5 +1,6 @@
        <div class="container-fluid">
            <h1 class="h3 mb-4 text-gray-800 text-center"><?= $title; ?></h1>
+           <div id="timer"></div>
            <div class="row">
                <div class="col-lg">
                    <div class="card">

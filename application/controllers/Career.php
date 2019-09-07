@@ -515,9 +515,9 @@ class Career extends CI_Controller
 
             $data['count_question']     = count($data['question']);
 
-            $time = time();
-            echo $time;
-            die();
+            $data['time']   = ($data['count_question']*60) - time();
+            $data['menit']  = (int)($data['time']/60);
+            $data['detik']  = $data['time']%60;
 
             $this->form_validation->set_rules('email', 'Email', 'trim|required');
             $this->form_validation->set_rules('count', 'Count', 'trim|required');

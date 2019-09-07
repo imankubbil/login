@@ -57,6 +57,41 @@
 
 <script>
   $(document).ready( function () {
+    var time = <?=$time;?>;
+    var menit = <?=$menit;?>;
+    var detik = <?=$detik;?>;
+
+    function hitung() {
+      setTimeout(hitung, 1000);
+
+      if (menit < 10 && time == 0) {
+        var peringatan = 'style="color:red"';
+      }
+
+      $('#timer').html('<h1 align="center"'+peringatan+'>Sisa waktu anda <br />'+time+'time :');
+      detik--;
+
+      if (detik < 0) {
+        detik = 59;
+        menit --;
+
+        if (menit < 0) {
+          menit = 59;
+          time --;
+
+          if (time < 0) {
+            clearInterval(hitung);
+
+            var frmSoal = document.getElementById('frmSoal');
+            alert('Waktu Anda telah habis');
+            frmSoal.submit();
+          }
+        }
+      }
+    }
+
+    hitung();
+    console.log($time);
     $('#tabel_data_pelamar').DataTable();
 
     $('#question').on('change', function() {
