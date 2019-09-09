@@ -149,4 +149,33 @@ class Personalia extends CI_Controller
             }
             redirect('personalia/psikotestData');
     }
+
+    public function jobvacancy()
+    {
+        $data['title'] = 'Job Vacancy Management';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('personalia/jobvacancy', $data);
+            $this->load->view('templates/footer');
+
+    }
+
+    public function addJobVacancy()
+    {
+        $data['title'] = 'Add Job Vacancy';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+
+        
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('personalia/add-jobvacancy', $data);
+            $this->load->view('templates/footer');
+    }
 }
