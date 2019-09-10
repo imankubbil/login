@@ -99,4 +99,29 @@ class Personalia_model extends CI_Model
 			return 0;
 		}
 	}
+
+	public function jobVacancy()
+	{
+		$data = $this->db->get('job_vacancy')->result_array();
+		return $data;
+	}
+
+	public function addJobVacancy()
+	{
+		$data = [
+
+		'job_require'   => $this->input->post('job_require', true),
+		'deskripsi'     => $this->input->post('deskripsi', true),
+		'created'     => $this->input->post('created', true)
+
+		];
+
+		return $this->db->insert('job_vacancy', $data);
+	}
+
+	public function getJobVacancyById($id)
+	{
+		$data = $this->db->select('*')->from('job_vacancy')->where('id_jobvacancy', $id)->get()->row_array();
+		return $data;
+	}
 }

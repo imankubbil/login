@@ -58,10 +58,7 @@ class Personalia extends CI_Controller
         $this->form_validation->set_rules('empat', 'Answer D', 'required|trim');
         $this->form_validation->set_rules('lima', 'Answer E', 'required|trim');
         $this->form_validation->set_rules('a[]', 'Checkbox', 'required|trim');
-        // $this->form_validation->set_rules('b', 'B', 'required|trim');
-        // $this->form_validation->set_rules('c', 'C', 'required|trim');
-        // $this->form_validation->set_rules('d', 'D', 'required|trim');
-        // $this->form_validation->set_rules('e', 'E', 'required|trim');
+     
 
         if($this->form_validation->run() == false){
             $this->load->view('templates/header', $data);
@@ -156,6 +153,9 @@ class Personalia extends CI_Controller
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
 
+        $data['data'] = $this->Personalia_model->jobVacancy();
+
+
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
@@ -171,11 +171,40 @@ class Personalia extends CI_Controller
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
 
         
+        $this->form_validation->set_rules('job_require', 'Job Require', 'required|trim');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
+
+            if($this->form_validation->run() == false){
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar', $data);
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('personalia/add-jobvacancy', $data);
+                $this->load->view('templates/footer');
+                
+            }else{
+            $result = $this->Personalia_model->addJobVacancy();
+            if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Sent');
+                // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Sent');
+            }
+            redirect('personalia/jobvacancy');            }
+    }
+
+    public function detailJobVacancy($id)
+    {
+        $data['title'] = 'Detail Job Vacancy';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+
+        $data['data'] = $this->Personalia_model->getJobVacancyById($id);
+
 
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('personalia/add-jobvacancy', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('personalia/detail-jobvacancy', $data);
+            $this->load->view('templates/footer'); 
     }
 }

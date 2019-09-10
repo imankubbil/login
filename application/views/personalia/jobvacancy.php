@@ -21,29 +21,30 @@
                   <tr>
                     <th>#</th>
                     <th>Job Require</th>
-                    <th>Description</th>
+                    <th>Created By</th>
+                    <th class="text-center">Description</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-            <!--  <?php $i = 1; ?>
+             <?php $i = 1; ?>
             <?php foreach ($data as $d) : ?>
               <tr>
                 <th scope="row"><?= $i; ?></th>
-                <td><?= $d['question']; ?></td>
-                <td><?= $d['jawaban']; ?></td>
-                <td><?= $d['name']; ?></td>
-                <td><?= $d['date_created']; ?></td>
+                <td><?= $d['job_require']; ?></td>
+                <td><?= $d['created']; ?></td>
+                <td><?= $d['deskripsi']; ?></td>
+               
                 
                 <td>
-                  <a href="<?= base_url(); ?>Personalia/detailPsikotest/<?= $d['id_question']; ?>" class="badge badge-success">Detail</a>
-                                 
-              	  <a href="<?= base_url(); ?>Personalia/deletePsikotest/<?= $d['id_question']; ?>" class="badge badge-danger">Delete</a>
+                  <a href="<?= base_url(); ?>Personalia/detailJobVacancy/<?= $d['id_jobvacancy']; ?>" class="badge badge-success">Detail</a>
+                   <a href="" class="badge badge-warning">Edit</a>              
+              	  <a href="" class="badge badge-danger">Delete</a>
 
                 </td>
               </tr>
               <?php $i++ ?>
-            <?php endforeach; ?> -->
+            <?php endforeach; ?>
           </tbody>
         </table>
 
