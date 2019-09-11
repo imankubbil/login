@@ -18,7 +18,7 @@
                                    </div>
                                    <div class="form-group col-md-12">
                                        <label for="deskripsi"><strong>Description</strong></label>
-                                       <textarea class="form-control" name="deskripsi" value="<?= set_value('deskripsi'); ?>" style="height: 250px;" placeholder="Masukkan deskripsi kriteria lowongan" ></textarea>
+                                       <textarea class="form-control editor_jobvacancy" name="deskripsi" value="<?= set_value('deskripsi'); ?>" style="height: 250px;" placeholder="Masukkan deskripsi kriteria lowongan" ></textarea>
                                        <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                                    </div>
                                    <div class="form-group col-md-4">

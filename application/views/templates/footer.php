@@ -53,46 +53,52 @@
 <script src="<?= base_url('assets/'); ?>js/script.js"></script>
 
 <script src="<?= base_url('assets/js/dataTables/datatables.min.js') ?>"></script>
-
+<script src="<?= base_url('assets/js/tinymce/tinymce.min.js') ?>"></script>
 
 <script>
   $(document).ready( function () {
-    var time = <?=$time;?>;
-    var menit = <?=$menit;?>;
-    var detik = <?=$detik;?>;
+    // var time = ;
+    // var menit = ;
+    // var detik = ;
 
-    function hitung() {
-      setTimeout(hitung, 1000);
+    // function hitung() {
+    //   setTimeout(hitung, 1000);
 
-      if (menit < 10 && time == 0) {
-        var peringatan = 'style="color:red"';
-      }
+    //   if (menit < 10 && time == 0) {
+    //     var peringatan = 'style="color:red"';
+    //   }
 
-      $('#timer').html('<h1 align="center"'+peringatan+'>Sisa waktu anda <br />'+time+'time :');
-      detik--;
+    //   $('#timer').html('<h1 align="center"'+peringatan+'>Sisa waktu anda <br />'+time+'time :');
+    //   detik--;
 
-      if (detik < 0) {
-        detik = 59;
-        menit --;
+    //   if (detik < 0) {
+    //     detik = 59;
+    //     menit --;
 
-        if (menit < 0) {
-          menit = 59;
-          time --;
+    //     if (menit < 0) {
+    //       menit = 59;
+    //       time --;
 
-          if (time < 0) {
-            clearInterval(hitung);
+    //       if (time < 0) {
+    //         clearInterval(hitung);
 
-            var frmSoal = document.getElementById('frmSoal');
-            alert('Waktu Anda telah habis');
-            frmSoal.submit();
-          }
-        }
-      }
-    }
+    //         var frmSoal = document.getElementById('frmSoal');
+    //         alert('Waktu Anda telah habis');
+    //         frmSoal.submit();
+    //       }
+    //     }
+    //   }
+    // }
 
-    hitung();
-    console.log($time);
+    // hitung();
+    // console.log($time);
     $('#tabel_data_pelamar').DataTable();
+
+    tinymce.init({
+      selector:'.editor_jobvacancy',
+      theme: 'modern',
+      height: 200
+    })
 
     $('#question').on('change', function() {
       console.log('Berhasil')

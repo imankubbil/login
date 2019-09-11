@@ -16,15 +16,9 @@
            						</tr>
            					</thead>
            					<tbody>
-							   <?php $explode = explode('-', $data['deskripsi']); 
-							   		unset($explode[0]);
-							 		
-							   ?>
-							   <?php $no = 1; foreach($explode as $exp) : ?>
            						<tr>
-           							<td><?= $no.$exp ?></td>
+           							<td><?= $data['deskripsi'] ?></td>
            						</tr>
-								<?php $no++; endforeach;?>
            					</tbody>
            				</table>
 
