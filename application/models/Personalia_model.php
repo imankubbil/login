@@ -124,4 +124,12 @@ class Personalia_model extends CI_Model
 		$data = $this->db->select('*')->from('job_vacancy')->where('id_jobvacancy', $id)->get()->row_array();
 		return $data;
 	}
+
+	public function deleteJobVacancy($id)
+	{
+		$this->db->where('id_jobvacancy', $id);
+		$data = $this->db->delete('job_vacancy');
+
+		return $data;
+	}
 }
