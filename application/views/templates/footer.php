@@ -40,6 +40,8 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.plugin.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.countdown.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
@@ -55,43 +57,31 @@
 <script src="<?= base_url('assets/js/dataTables/datatables.min.js') ?>"></script>
 <script src="<?= base_url('assets/js/tinymce/tinymce.min.js') ?>"></script>
 
+<script type="text/javascript">
+function waktuHabis(){
+	alert("Waktu anda habis!!!");
+	}		
+function hampirHabis(periods){
+	if($.countdown.periodsToSeconds(periods) == 30){
+		$(this).css({color:"red"});
+		}
+	}
+$(function(){
+	
+	var sisa_waktu =  <?php echo $waktu ?>;
+	
+	var TimeOut = sisa_waktu;
+	$("#hitmundur").countdown({
+		until: TimeOut,
+		compact:true,
+		onExpiry:waktuHabis,
+		onTick: hampirHabis
+		});	
+	})
+</script>
+
 <script>
   $(document).ready( function () {
-    // var time = ;
-    // var menit = ;
-    // var detik = ;
-
-    // function hitung() {
-    //   setTimeout(hitung, 1000);
-
-    //   if (menit < 10 && time == 0) {
-    //     var peringatan = 'style="color:red"';
-    //   }
-
-    //   $('#timer').html('<h1 align="center"'+peringatan+'>Sisa waktu anda <br />'+time+'time :');
-    //   detik--;
-
-    //   if (detik < 0) {
-    //     detik = 59;
-    //     menit --;
-
-    //     if (menit < 0) {
-    //       menit = 59;
-    //       time --;
-
-    //       if (time < 0) {
-    //         clearInterval(hitung);
-
-    //         var frmSoal = document.getElementById('frmSoal');
-    //         alert('Waktu Anda telah habis');
-    //         frmSoal.submit();
-    //       }
-    //     }
-    //   }
-    // }
-
-    // hitung();
-    // console.log($time);
     $('#tabel_data_pelamar').DataTable();
 
     tinymce.init({
