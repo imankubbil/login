@@ -207,4 +207,21 @@ class Personalia extends CI_Controller
             $this->load->view('personalia/detail-jobvacancy', $data);
             $this->load->view('templates/footer'); 
     }
+
+    public function deleteJobVacancy()
+    {
+        $id = $this->uri->segment(3);
+
+        $result = $this->Personalia_model->deleteJobVacancy($id);
+
+
+       if ($result > 0) {
+            $this->session->set_flashdata('message', 'Has Been Deleted');
+            // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Deleted');
+            }
+            redirect('personalia/jobvacancy');
+
+    }
 }
