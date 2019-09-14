@@ -256,4 +256,9 @@ class Career_model extends CI_Model
     //             }
     //         }
     // }
+
+    public function insert_user_answer($data)
+    {
+        return $this->db->insert_batch('user_answer', $data);
+    }
 }

@@ -37,9 +37,10 @@
     </div>
   </div>
 </div>
+<?php if(empty($waktu)){ $waktu = "0"; }?>
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.plugin.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.countdown.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -58,19 +59,38 @@
 <script src="<?= base_url('assets/js/tinymce/tinymce.min.js') ?>"></script>
 
 <script type="text/javascript">
-function waktuHabis(){
-	alert("Waktu anda habis!!!");
-	}		
-function hampirHabis(periods){
-	if($.countdown.periodsToSeconds(periods) == 30){
-		$(this).css({color:"red"});
-		}
-	}
-$(function(){
-	
-	var sisa_waktu =  <?php echo $waktu ?>;
-	
-	var TimeOut = sisa_waktu;
+  function waktuHabis(){
+    $.ajax({
+      url: '<?=base_url('career/submit_countdown_exam')?>',
+      type: 'POST',
+      data : new FormData($('#form_exam')[0]),
+      processData: false,
+      contentType : false,
+      cache : false,
+      success : function(response) {
+        if (response == 1) {
+          Swal.fire('Success', 'Sorry, Time Out. Has Been Sent', 'success');
+        } else {
+          Swal.fire('Success', 'Sorry, Time Out. Has Not Been Sent', 'error');
+        }
+
+        document.location.href = "<?= base_url('career'); ?>";
+      }
+    });
+  }
+
+  function hampirHabis(periods){
+
+    if($.countdown.periodsToSeconds(periods) == 30){
+      $(this).removeClass('alert-success');
+      $(this).addClass('alert-danger');
+      }
+    }
+  
+  $(function(){
+  	var sisa_waktu =  <?php echo $waktu;?>;
+  	var TimeOut = sisa_waktu;
+
 	$("#hitmundur").countdown({
 		until: TimeOut,
 		compact:true,
@@ -89,19 +109,14 @@ $(function(){
       theme: 'modern',
       height: 200
     })
-
-    $('#question').on('change', function() {
-      console.log('Berhasil')
-      // $('#question').css("background-color", "#FFDAA3");
-    });
   });
+
   $('.custom-file-input').on('change', function() {
     let fileName = $(this).val().split('\\').pop();
     $(this).next('.custom-file-label').addClass("selected").html(fileName);
   });
 
-
-  $('.form-check-input').on('click', function() {
+  $('.role_access').on('click', function() {
     const menuId = $(this).data('menu');
     const roleId = $(this).data('role');
 
@@ -359,8 +374,6 @@ $(function(){
 
     return true;
   }
-
-
 </script>
 
 </body>

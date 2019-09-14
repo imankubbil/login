@@ -508,43 +508,87 @@ class Career extends CI_Controller
 
     public function exam()
     {
+        $get_access = ucwords($this->uri->segment(1));
 
-            $data['title']      = 'Psikotest Examination';
-            $data['user']       = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
-            $data['question']   = $this->db->get('question')->result_array();
+        $data['title']          = 'Psikotest Examination';
+        $data['user']           = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+        $data['question']       = $this->db->get('question')->result_array();
+        $data['count_question'] = count($data['question']);
+        $data['access_menu']    = $this->db->get_where('user_menu', ['menu' => $get_access])->row_array()['id'];
+        $data['waktu']          = $data['count_question']*10;
 
-            $data['count_question']     = count($data['question']);
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        $this->form_validation->set_rules('count', 'Count', 'trim|required');
+        for ($i=1; $i <= $data['count_question']; $i++) { 
+            $field = $i."-jawaban";
+            $this->form_validation->set_rules($field, $field, 'trim');
+        }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            // $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('psikotest/exam-view', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $count = $this->input->post('count', TRUE);
 
-            $data['waktu']   = $data['count_question']*120;
-
-            $this->form_validation->set_rules('email', 'Email', 'trim|required');
-            $this->form_validation->set_rules('count', 'Count', 'trim|required');
-            for ($i=1; $i <= $data['count_question']; $i++) { 
-                $field = $i."-jawaban";
-                $this->form_validation->set_rules($field, $field, 'trim|required');
-            }
-            if ($this->form_validation->run() == false) {
-                $this->load->view('templates/header', $data);
-                // $this->load->view('templates/sidebar', $data);
-                $this->load->view('templates/topbar', $data);
-                $this->load->view('psikotest/exam-view', $data);
-                $this->load->view('templates/footer');
-            } else {
-                echo json_encode($this->input->post());
-                die();
-                $count = $this->input->post('count', TRUE);
-
-                $data_get_submit = [];
-                for ($i=1; $i <= $count ; $i++) { 
-                    $name_post = $i.'-jawaban';
-                    $implode = explode("-", $this->input->post($name_post, TRUE));
-                    // echo json_encode($implode);
+            $data_get_submit = [];
+            for ($i=1; $i <= $count ; $i++) { 
+                $name_post = $i.'-jawaban';
+                $data_input = $this->input->post($name_post, TRUE);
+                if ($data_input != "") {
+                    $implode = explode("-", $data_input);
                     $data_get_submit[$i-1]['email']         = $this->input->post('email', TRUE);
                     $data_get_submit[$i-1]['id_answer']     = $implode[0];
                     $data_get_submit[$i-1]['id_question']   = $implode[1];
                     $data_get_submit[$i-1]['urutan']        = $implode[2];
+                } else {
+                    $implode = explode("-", $data_input);
+                    $data_get_submit[$i-1]['email']         = $this->input->post('email', TRUE);
+                    $data_get_submit[$i-1]['id_answer']     = "";
+                    $data_get_submit[$i-1]['id_question']   = "";
+                    $data_get_submit[$i-1]['urutan']        = "";
                 }
-                echo json_encode($data_get_submit);
+            }
+
+            $result = $this->career_model->insert_user_answer($data_get_submit);
+            if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Sent');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Sent');
+            }
+            redirect('career');
+        }
+    }
+
+    public function submit_countdown_exam() 
+    {
+        $count = $this->input->post('count', TRUE);
+
+            $data_get_submit = [];
+            for ($i=1; $i <= $count ; $i++) { 
+                $name_post = $i.'-jawaban';
+                $data_input = $this->input->post($name_post, TRUE);
+                if ($data_input != "") {
+                    $implode = explode("-", $data_input);
+                    $data_get_submit[$i-1]['email']         = $this->input->post('email', TRUE);
+                    $data_get_submit[$i-1]['id_answer']     = $implode[0];
+                    $data_get_submit[$i-1]['id_question']   = $implode[1];
+                    $data_get_submit[$i-1]['urutan']        = $implode[2];
+                } else {
+                    $implode = explode("-", $data_input);
+                    $data_get_submit[$i-1]['email']         = $this->input->post('email', TRUE);
+                    $data_get_submit[$i-1]['id_answer']     = "";
+                    $data_get_submit[$i-1]['id_question']   = "";
+                    $data_get_submit[$i-1]['urutan']        = "";
+                }
+            }
+        
+            $result = $this->career_model->insert_user_answer($data_get_submit);
+            if ($result > 0) {
+                echo 1;
+            } else {
+                echo 0;
             }
     }
 }
