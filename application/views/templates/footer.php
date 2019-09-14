@@ -78,6 +78,8 @@ $(function(){
 		onTick: hampirHabis
 		});	
 	})
+
+  // $('#mdb-lightbox-ui').load("mdb-addons/mdb-lightbox-ui.html");
 </script>
 
 <script>
@@ -359,6 +361,8 @@ $(function(){
 
     return true;
   }
+
+
 
 
 </script>

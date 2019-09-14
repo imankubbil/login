@@ -224,4 +224,36 @@ class Personalia extends CI_Controller
             redirect('personalia/jobvacancy');
 
     }
+
+    public function editJobVacancy()
+    {
+        $id = $this->uri->segment(3);
+        $data['title'] = 'Edit Job Vacancy';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+        $data['data'] = $this->Personalia_model->getjobVacancyById($id);
+
+        $this->form_validation->set_rules('job_require', 'Job Require', 'required|trim');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
+
+        if($this->form_validation->run() == false){
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('personalia/edit-jobvacancy', $data);
+            $this->load->view('templates/footer');
+         }else{
+
+            $result = $this->Personalia_model->editJobVacancy();
+            if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Updated');
+                // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Updated');
+            }
+            redirect('personalia/jobvacancy');
+
+    }
+}
+
 }
