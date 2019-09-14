@@ -63,7 +63,7 @@
                              </tr> -->
                          </table>
                          <!-- <a href="<?= base_url('career/exam'); ?>" class="btn btn-primary" title="apply" id="name">Apply and Send</a> -->
-                         <button class="btn btn-primary" title="apply" id="name" data-toggle="modal" data-target="#modal_lanjut_psikotest">Apply and Send</button>
+                         <button class="btn btn-primary" title="apply" id="name" data-toggle="modal" data-target="#modal_lanjut_psikotest" <?php if($user_answer > 0) { echo "hidden";}?>>Apply and Send</button>
 
                      </div>
                  </div>

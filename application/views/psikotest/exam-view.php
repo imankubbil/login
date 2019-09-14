@@ -1,8 +1,8 @@
        <div class="container-fluid">
            <h1 class="h3 mb-4 text-gray-800 text-center"><?= $title; ?></h1>
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-end">
                 <div class="col-sm-2">
-                    <div id="hitmundur" class="alert alert-success" role="alert"></div>
+                    <div id="hitmundur" class="alert alert-success text-center position-fixed" style="z-index:10;" role="alert"></div>
                 </div>
             </div>
            <div class="row">

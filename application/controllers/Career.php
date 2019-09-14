@@ -18,7 +18,7 @@ class Career extends CI_Controller
         // echo 'Selamat Datang ' . $data['user']['name'];
 
         $data['menu'] = $this->db->get('user_menu')->result_array();
-
+        $data['user_answer'] = $this->db->get_where('user_answer', ['email' => $this->session->userdata('email')])->num_rows();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -515,7 +515,7 @@ class Career extends CI_Controller
         $data['question']       = $this->db->get('question')->result_array();
         $data['count_question'] = count($data['question']);
         $data['access_menu']    = $this->db->get_where('user_menu', ['menu' => $get_access])->row_array()['id'];
-        $data['waktu']          = $data['count_question']*10;
+        $data['waktu']          = $data['count_question']*120;
 
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('count', 'Count', 'trim|required');
