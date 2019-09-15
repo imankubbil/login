@@ -17,41 +17,47 @@
                          <table class="table table-hover mt-4">
                              <tr id="personal_data">
                                  <td style="color:black; font-weight: bold">Personal Data</td>
-                                 <td style="display:none;" id="ket_personal">
+                                 <td id="ket_personal" <?php if($personal > 0) { echo "";} else { echo "hidden";}?>>
                                      <div class="badge badge-success">Sudah diisi</div>
                                  </td>
-                                 <td><a href="<?= base_url('career/personal'); ?>" class="btn btn-primary" id="fill_personal">Fill Form</a>
+                                 <td><a href="<?= base_url('career/personal'); ?>" class="btn btn-primary" id="fill_personal" <?php if($personal > 0) { echo "hidden";}?>>Fill Form</a>
                                      <!-- <div id="edit_form"></div> -->
                                      <a href="<?= base_url('career/personalEdit'); ?>" class="btn btn-warning" id="edit_personal">Edit Form</a>
                                  </td>
                              </tr>
                              <tr id="edu_data">
                                  <td style="color:black; font-weight: bold">Education Data</td>
-                                 <td style="display:none;" id="ket_education">
+                                 <td id="ket_education" <?php if($education > 0) { echo "";} else { echo "hidden";}?>>
                                      <div class="badge badge-success">Sudah diisi</div>
                                  </td>
-                                 <td><a href="<?= base_url('career/education'); ?>" class="btn btn-primary">Fill Form</a>
+                                 <td><a href="<?= base_url('career/education'); ?>" class="btn btn-primary" <?php if($education > 0) { echo "hidden";}?>>Fill Form</a>
                                      <a href="<?= base_url('career/educationEdit'); ?>" class="btn btn-warning" id="edit_education">Edit Form</a>
                                  </td>
                              </tr>
                              <tr id="work_data">
                                  <td style="color:black; font-weight: bold">Work History</td>
-                                 <td style="display:none;" id="ket_work">
+                                 <td id="ket_work" <?php if($work_history > 0) { echo "";} else { echo "hidden";}?>>
                                      <div class="badge badge-success">Sudah diisi</div>
                                  </td>
-                                 <td><a href="<?= base_url('career/workHistory'); ?>" class="btn btn-primary">Fill Form</a>
+                                 <td><a href="<?= base_url('career/workHistory'); ?>" class="btn btn-primary" <?php if($work_history > 0) { echo "hidden";}?>>Fill Form</a>
                                      <a href="<?= base_url('career/workHistoryEdit'); ?>" class="btn btn-warning" id="edit_work">Edit Form</a>
                                  </td>
                              </tr>
                              <tr id="family_data">
                                  <td style="color:black; font-weight: bold">Family Data</td>
-                                 <td><a href="<?= base_url('career/familyData'); ?>" class="btn btn-primary">Fill Form</a>
+                                 <td id="ket_family" <?php if($family > 0) { echo "";} else { echo "hidden";}?>>
+                                     <div class="badge badge-success">Sudah diisi</div>
+                                 </td>
+                                 <td><a href="<?= base_url('career/familyData'); ?>" class="btn btn-primary" <?php if($family > 0) { echo "hidden";}?>>Fill Form</a>
                                      <a href="<?= base_url('career/FamilyEdit'); ?>" class="btn btn-warning" id="edit_work">Edit Form</a>
                                  </td>
                              </tr>
                              <tr id="concept_data">
                                  <td style="color:black; font-weight: bold">Self Concept And Interest</td>
-                                 <td><a href="<?= base_url('career/selfConcept'); ?>" class="btn btn-primary">Fill Form</a>
+                                 <td id="ket_concept" <?php if($concept > 0) { echo "";} else { echo "hidden";}?>>
+                                     <div class="badge badge-success">Sudah diisi</div>
+                                 </td>
+                                 <td><a href="<?= base_url('career/selfConcept'); ?>" class="btn btn-primary" <?php if($concept > 0) { echo "hidden";}?>>Fill Form</a>
                                      <a href="<?= base_url('career/selfEdit'); ?>" class="btn btn-warning" id="edit_self">Edit Form</a>
                                  </td>
                              </tr>
@@ -73,9 +79,6 @@
 
              </div>
 
-
-             <!-- /.container-fluid -->
-
              <div class="modal fade" id="modal_lanjut_psikotest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                  <div class="modal-dialog modal-md" role="document">
                      <div class="modal-content">
@@ -91,4 +94,3 @@
                      </div>
                  </div>
              </div>
-             <!-- End of Main Content -->

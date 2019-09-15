@@ -18,6 +18,11 @@ class Career extends CI_Controller
         // echo 'Selamat Datang ' . $data['user']['name'];
 
         $data['menu'] = $this->db->get('user_menu')->result_array();
+        $data['personal']   = $this->db->get_where('personal', ['email' => $this->session->userdata('email')])->num_rows();
+        $data['education']   = $this->db->get_where('education', ['email' => $this->session->userdata('email')])->num_rows();
+        $data['work_history']   = $this->db->get_where('work_history', ['email' => $this->session->userdata('email')])->num_rows();
+        $data['family']   = $this->db->get_where('family_data', ['email' => $this->session->userdata('email')])->num_rows();
+        $data['concept']   = $this->db->get_where('self_concept', ['email' => $this->session->userdata('email')])->num_rows();
         $data['user_answer'] = $this->db->get_where('user_answer', ['email' => $this->session->userdata('email')])->num_rows();
 
         $this->load->view('templates/header', $data);
