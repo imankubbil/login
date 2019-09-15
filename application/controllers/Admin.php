@@ -117,8 +117,9 @@ class Admin extends CI_Controller
                 'product_name' => $this->input->post('product_name', true),
                 'image' => $_FILES['image']['name'],
                 'deskripsi' => $this->input->post('deskripsi', true),
-                'created' => $this->input->post('created')
+                'created' => $this->input->post('created', true)
             ];
+
             $file_name = $this->uploadImage($_FILES['image']['tmp_name']);
 
             $result = $this->db->insert('product', $data);
@@ -143,10 +144,126 @@ class Admin extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('image')) {
-            return $this->upload->data("file_name");
-        } 
+        if ( ! $this->upload->do_upload('image'))
+        {
+            $this->session->set_flashdata('error', "Swal.fire('ERROR', 'File too big', 'error')");
+            redirect('admin/addProduct');
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            return $this->upload->data("file_name");   
+        }
 
-        return "default.png";
+        // if ($this->upload->do_upload('image')) {
+        //     return $this->upload->data("file_name");
+        // } else {
+        //     echo json_encode($this->upload->display_errors());
+        // }
+        // die();
+
+        // return "default.png";
+    }
+
+    public function editProduct()
+    {
+        $id = $this->uri->segment(3);
+        $data['title'] = 'Edit Product';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+        $data['data'] = $this->Admin_model->getProductById($id);
+
+        $this->form_validation->set_rules('product_name', 'Product Name', 'required|trim');
+        $this->form_validation->set_rules('deskripsi', 'Description', 'required|trim');
+
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit-product', $data);
+            $this->load->view('templates/footer');
+        }else{
+            $id = $this->input->post('id_product', true);
+            
+            $upload_image = $_FILES['image']['name'];
+
+            if ($upload_image == "" || $upload_image == NULL) {
+                $data = [
+                    'product_name'  => $this->input->post('product_name', true),
+                    'deskripsi'     => $this->input->post('deskripsi', true),
+                    'created'       => $this->input->post('created', true)
+                ];
+            } else {
+                $get_old_image = $this->db->get_where('product', ['id_product' => $id])->row_array()['image'];
+                if ($get_old_image != 'default.jpg') {
+                    unlink(FCPATH . 'assets/img/product/' . $get_old_image);
+                } 
+                $data = [
+                    'product_name'  => $this->input->post('product_name', true),
+                    'deskripsi'     => $this->input->post('deskripsi', true),
+                    'created'       => $this->input->post('created', true),
+                    'image'         => $this->uploadImage($_FILES['image']['tmp_name'])
+                ];
+            }
+
+            $this->db->where('id_product', $id);
+            $result = $this->db->update('product', $data);
+
+            if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Updated');
+                // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Updated');
+            }
+            redirect('admin/product');
+        }
+    }
+
+    public function deleteProduct()
+    {
+        $id = $this->uri->segment(3);
+
+        $get_old_image = $this->db->get_where('product', ['id_product' => $id])->row_array()['image'];
+                if ($get_old_image != 'default.jpg') {
+                    unlink(FCPATH . 'assets/img/product/' . $get_old_image);
+                } 
+        $result = $this->Admin_model->deleteProduct($id);
+
+
+         if ($result > 0) {
+            $this->session->set_flashdata('message', 'Has Been Deleted');
+            // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Deleted');
+            }
+            redirect('admin/product');   
+    }
+
+    public function katalog()
+    {
+        $data['title'] = 'Catalogue Management';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/katalog', $data);
+        $this->load->view('templates/footer');
+
+    }
+
+    public function addKatalog()
+    {
+        $data['title'] = 'Add Catalogue';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/add-katalog', $data);
+        $this->load->view('templates/footer');
     }
 }

@@ -56,6 +56,7 @@
 
 <script src="<?= base_url('assets/js/dataTables/datatables.min.js') ?>"></script>
 <script src="<?= base_url('assets/js/tinymce/tinymce.min.js') ?>"></script>
+<?php echo '<script>'.$this->session->flashdata('error').'</script>'?>
 
 <script type="text/javascript">
 function waktuHabis(){

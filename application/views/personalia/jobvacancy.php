@@ -16,7 +16,8 @@
         <div class="col-lg">
           <div class="card">
             <div class="card-body">
-              <table class="table table-hover mt-3"> 
+            <div class="table-responsive">
+              <table class="table table-hover mt-3" id="tabel_data_pelamar"> 
                 <thead>
                   <tr>
                     <th>#</th>
@@ -47,6 +48,7 @@
             <?php endforeach; ?>
           </tbody>
         </table>
+        </div>
 
       </div>
     </div>

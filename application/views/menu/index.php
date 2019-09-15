@@ -12,7 +12,9 @@
                    <!-- <?= $this->session->flashdata('message'); ?> -->
 
                    <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
-                   <table class=" table table-hover">
+
+                   <div class="table-responsive">
+                   <table class=" table table-hover" id="tabel_data_pelamar">
                        <thead>
                            <tr>
                                <th scope="col">#</th>
@@ -35,6 +37,8 @@
                            <?php endforeach; ?>
                        </tbody>
                    </table>
+                   </div>
+                   
                </div>
            </div>
 

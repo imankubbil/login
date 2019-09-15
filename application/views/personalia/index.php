@@ -3,17 +3,6 @@
 
        	<!-- Page Heading -->
        	<h1 class="h3 mb-4 text-gray-800 text-center"><?= $title; ?></h1>
-
-       	<!-- <div class="row col-lg">
-       		<div class="input-group">
-       			<input type="text" name="cari" id="myInput" class="form-control" placeholder="Search By Names..." onkeyup="myFunction()">
-       			<div class="input-group-append">
-       				<button class="btn btn-primary" type="button">
-       					<i class="fas fa-search"></i>
-       				</button>
-       			</div>
-       		</div>
-        </div> -->
         <div class="row mt-3">
           <div class="col-lg">
             <div class="card">
