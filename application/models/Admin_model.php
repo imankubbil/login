@@ -24,6 +24,26 @@ class Admin_model extends CI_Model
 		return $data;
 	}
 
+	public function getkatalog()
+	{
+		$data = $this->db->get('catalogue')->result_array();
+		return $data;
+	}
+
+	public function getKatalogById($id)
+	{
+		$data = $this->db->select('*')->from('catalogue')->where('id_catalogue', $id)->get()->row_array();
+		return $data;
+	}
+
+	public function deleteKatalog($id)
+	{
+		$this->db->where('id_catalogue', $id);
+		$data = $this->db->delete('catalogue');
+
+		return $data;
+	}
+
 
 
 

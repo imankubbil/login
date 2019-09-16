@@ -28,23 +28,27 @@
                                    </tr>
                                    </thead>
                                    <tbody>
-                                    <!-- <?php $i = 1; ?>
+                                    <?php $i = 1; ?>
                                     <?php foreach ($data as $d) : ?>
                                    <tr>
                                           <th scope="row"><?= $i; ?></th>
-                                          <td><?= $d['job_require']; ?></td>
-                                          <td><?= $d['created']; ?></td>
+                                          <td><?= $d['catalogue_name']; ?></td>
+                                          <td>
+                                            <a href="<?= base_url('assets/img/catalogue/') . $d['image']; ?>" title="">
+                                             <img src="<?= base_url('assets/img/catalogue/') . $d['image']; ?>" class="img-thumbnail" style="height: 150px; width: 150px;">
+                                            </a>
+                                          </td>
+                                          <td><?= $d['periode']; ?></td>
                                           <td><?= $d['deskripsi']; ?></td>
-               
-                
+                                          <td><?= $d['created']; ?></td>
                                    <td>
-                                   <a href="">Edit</a>              
-                                   <a href="">Delete</a>
+                                   <a href="<?= base_url(); ?>Admin/editKatalog/<?= $d['id_catalogue']; ?>" class="badge badge-warning">Edit</a>              
+                                   <a href="<?= base_url(); ?>Admin/deleteKatalog/<?= $d['id_catalogue']; ?>" class="badge badge-danger tombol-hapus">Delete</a>
 
                                    </td>
                                    </tr>
                                    <?php $i++ ?>
-                                   <?php endforeach; ?> -->
+                                   <?php endforeach; ?>
                                    </tbody>
                             </table>
                                    

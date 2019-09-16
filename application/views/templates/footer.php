@@ -244,6 +244,14 @@ $(function(){
         minViewMode: "years"
       });
 
+    $("#datepickerMonth").datepicker( {
+   format: 'MM yyyy',
+                viewMode: "months",
+                minViewMode: "months",
+                autoClose: true
+    });
+
+
     // Pengaturan untuk form work history
     $("#tambah").on('click', function() {
       $("#dua").show();

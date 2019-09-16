@@ -155,14 +155,29 @@ class Admin extends CI_Controller
             return $this->upload->data("file_name");   
         }
 
-        // if ($this->upload->do_upload('image')) {
-        //     return $this->upload->data("file_name");
-        // } else {
-        //     echo json_encode($this->upload->display_errors());
-        // }
-        // die();
+    }
 
-        // return "default.png";
+    public function katalogUpload()
+    {
+         $this->data['notification'] = '';
+         $config['upload_path']   = './assets/img/catalogue'; 
+         $config['allowed_types'] = 'jpg|png|jpeg'; 
+         $config['max_size']      = 10240;
+         $config['overwrite']     = true; 
+
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('image'))
+        {
+            $this->session->set_flashdata('error', "Swal.fire('ERROR', 'File too big', 'error')");
+            redirect('admin/addKatalog');
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            return $this->upload->data("file_name");   
+        }
     }
 
     public function editProduct()
@@ -246,6 +261,8 @@ class Admin extends CI_Controller
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
 
+        $data['data'] = $this->Admin_model->getKatalog();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -260,10 +277,112 @@ class Admin extends CI_Controller
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
 
+        $this->form_validation->set_rules('catalogue_name', 'Catalogue Name', 'required|trim');
+        $this->form_validation->set_rules('periode', 'Periode', 'required|trim');
+        $this->form_validation->set_rules('deskripsi', 'Description', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/add-katalog', $data);
         $this->load->view('templates/footer');
+        }else{
+            $data = [
+                'catalogue_name' => $this->input->post('catalogue_name', true),
+                'image' => $_FILES['image']['name'],
+                'periode' => $this->input->post('periode', true),
+                'deskripsi' => $this->input->post('deskripsi', true),
+                'created' => $this->input->post('created', true)
+            ];
+
+            $file_name = $this->katalogUpload($_FILES['image']['tmp_name']);
+
+            $result = $this->db->insert('catalogue', $data);
+            if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Sent');
+                // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Sent');
+            }
+            redirect('admin/katalog');
+        }
+    }
+
+    public function editKatalog()
+    {
+        $id = $this->uri->segment(3);
+        $data['title'] = 'Edit Catalogue';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+        $data['data'] = $this->Admin_model->getKatalogById($id);
+
+        $this->form_validation->set_rules('catalogue_name', 'Catalogue Name', 'required|trim');
+        $this->form_validation->set_rules('periode', 'Periode', 'required|trim');
+        $this->form_validation->set_rules('deskripsi', 'Description', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit-katalog', $data);
+            $this->load->view('templates/footer');
+        }else{
+            $id = $this->input->post('id_catalogue', true);
+            
+            $upload_image = $_FILES['image']['name'];
+
+            if ($upload_image == "" || $upload_image == NULL) {
+                $data = [
+                    'catalogue_name'  => $this->input->post('catalogue_name', true),
+                    'periode'     => $this->input->post('periode', true),
+                    'deskripsi'     => $this->input->post('deskripsi', true),
+                    'created'       => $this->input->post('created', true)
+                ];
+            } else {
+                $get_old_image = $this->db->get_where('catalogue', ['id_catalogue' => $id])->row_array()['image'];
+                if ($get_old_image != 'default.jpg') {
+                    unlink(FCPATH . 'assets/img/catalogue/' . $get_old_image);
+                } 
+                $data = [
+                    'catalogue_name' => $this->input->post('catalogue_name', true),
+                    'periode'        => $this->input->post('periode', true),
+                    'deskripsi'      => $this->input->post('deskripsi', true),
+                    'created'        => $this->input->post('created', true),
+                    'image'          => $this->katalogUpload($_FILES['image']['tmp_name'])
+                ];
+            }
+
+            $this->db->where('id_catalogue', $id);
+            $result = $this->db->update('catalogue', $data);
+
+            if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Updated');
+                // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Updated');
+            }
+            redirect('admin/katalog');
+        }
+    }
+
+    public function deleteKatalog()
+    {
+        $id = $this->uri->segment(3);
+
+        $get_old_image = $this->db->get_where('catalogue', ['id_catalogue' => $id])->row_array()['image'];
+                if ($get_old_image != 'default.jpg') {
+                    unlink(FCPATH . 'assets/img/catalogue/' . $get_old_image);
+                } 
+        $result = $this->Admin_model->deleteKatalog($id);
+
+
+         if ($result > 0) {
+            $this->session->set_flashdata('message', 'Has Been Deleted');
+            // $this->session->set_flashdata('show', 'tampil data edit');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Deleted');
+            }
+            redirect('admin/katalog');   
     }
 }
