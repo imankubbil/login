@@ -14,6 +14,7 @@ class Frontend extends CI_Controller
     public function index()
     {
         $data['title'] = 'Selma By Informa';
+        
 
         // $data['menu'] = $this->db->get('user_menu')->result_array();
 

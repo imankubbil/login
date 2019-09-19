@@ -23,5 +23,5 @@
 	<link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="">
 </head>
-<body>
+<body class="animsition">
 	
