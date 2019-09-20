@@ -19,9 +19,9 @@ class Frontend extends CI_Controller
         // $data['menu'] = $this->db->get('user_menu')->result_array();
 
 
-        $this->load->view('frontend/header', $data);
-        $this->load->view('frontend/index', $data);
-        $this->load->view('frontend/footer');
+        $this->load->view('frontend/header2', $data);
+        $this->load->view('frontend/index2', $data);
+        $this->load->view('frontend/footer2');
         // $this->_cekData(); 
 
     }
