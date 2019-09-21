@@ -72,7 +72,13 @@ function getRupiah($harga) {
 function getMenu($menu_id)
 {
     $ci = get_instance();
-
     $result = $ci->db->get_where('user_menu', ['id' => $menu_id])->row_array();
     return $result;
+}
+
+function get_status($id_answer, $id_question, $urutan)
+{
+    $CI =& get_instance();
+    $result = $CI->db->get_where('answer', ['id_question' => $id_question, 'id_answer' => $id_answer, 'urutan' => $urutan])->row_array();
+    return $result['status'];
 }
