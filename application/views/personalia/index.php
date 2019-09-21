@@ -9,6 +9,7 @@
             <div class="card">
               <div class="card-body">
               <div class="table-responsive">
+              <?= $this->session->flashdata('message'); ?>
                 <table class="table table-hover mt-3" id="tabel_data_pelamar"> 
                 <thead>
                   <tr>
@@ -35,7 +36,10 @@
                      <td><?= $d['alamat']; ?></td>
                      <td>
                        <a href="" class="badge badge-success">Detail</a>
-                       <a href="" class="badge badge-danger">Send Email</a>
+                       <?=form_open('auth/informationPsikotest');?>
+                          <input type="text" name="email" value="<?=$d['email']?>" hidden>
+                          <button type="submit" class="badge badge-danger">Send Email</button>
+                       <?=form_close();?>
                      </td>
                    </tr>
                    <?php $i++ ?>
