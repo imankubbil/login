@@ -52,7 +52,7 @@
 		  	<figure>
 		  		<img src="<?= base_url('assets/'); ?>img/catalogue/6.jpg" class="img-fluid" style="width: 350px; height: 350px;">
 		  		<figcaption class="figure-caption">
-		  			<h3 class="t-center"><strong>Confy sofa</strong></h3>
+		  			<h3><strong>Confy sofa</strong></h3>
 				</figcaption>
 		  	</figure>
 		  </div>

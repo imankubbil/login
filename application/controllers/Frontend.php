@@ -14,15 +14,14 @@ class Frontend extends CI_Controller
     public function index()
     {
         $data['title'] = 'Selma By Informa';
+        $data['katalog'] = $this->db->select('*')->from('catalogue')->order_by('id_catalogue', 'desc')->limit(3)->get()->result_array();
+
+        // echo json_encode($data);
+        // die();
+        $this->load->view('frontend/header', $data);
+        $this->load->view('frontend/index', $data);
+        $this->load->view('frontend/footer');
         
-
-        // $data['menu'] = $this->db->get('user_menu')->result_array();
-
-
-        $this->load->view('frontend/header2', $data);
-        $this->load->view('frontend/index2', $data);
-        $this->load->view('frontend/footer2');
-        // $this->_cekData(); 
 
     }
 
