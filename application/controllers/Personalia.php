@@ -26,6 +26,12 @@ class Personalia extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function testing()
+    {
+        $data['email']   = $this->session->userdata('email');
+        $this->load->view('send_email/information_psikotest', $data);
+    }
+
     public function psikotestData()
     {
         $data['title'] = 'Psikotest Data';

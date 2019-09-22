@@ -170,7 +170,7 @@ class Auth extends CI_Controller
 			$data_information['email'] = $this->input->post('email', TRUE);
 			$data_information['token'] = $token;
 			$content = $this->load->view('send_email/information_psikotest', $data_information, TRUE);
-			$this->email->message($content);
+			// $this->email->message($content);
 		}
 
 		if ($this->email->send()) {
