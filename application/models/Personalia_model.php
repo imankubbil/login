@@ -132,4 +132,18 @@ class Personalia_model extends CI_Model
 
 		return $data;
 	}
+
+	public function editJobVacancy()
+	{
+		$data = [
+
+		'job_require'   => $this->input->post('job_require', true),
+		'deskripsi'     => $this->input->post('deskripsi', true),
+		'created'     => $this->input->post('created', true)
+		];
+
+		$this->db->where('id_jobvacancy',$this->input->post('id_jobvacancy'));
+        return $this->db->update('job_vacancy', $data);
+	}
+
 }
