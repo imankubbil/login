@@ -5,7 +5,10 @@ class Admin_model extends CI_Model
 {
 	public function getProduct()
 	{
-		$data = $this->db->get('product')->result_array();
+		// $data = $this->db->get('product')->order_by('id_product', 'desc')->result_array();
+
+		 $data = $this->db->select('*')->from('product')->order_by('id_product', 'desc')->get()->result_array();
+
 		return $data;
 
 	}
