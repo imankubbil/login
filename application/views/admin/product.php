@@ -24,8 +24,8 @@
                                    			<th>#</th>
                                    			<th>Product Name</th>
                                    			<th>Product Picture</th>
+                                                        <th>Created By</th>
                                    			<th>Description</th>
-                                   			<th>Created By</th>
                                    			<th>Action</th>
                                    		</tr>
                                    	</thead>
@@ -43,8 +43,8 @@
 						<img src="<?= base_url('assets/img/product/') . $d['image']; ?>" class="img-thumbnail" style="height: 150px; width: 150px;">
 					</a>
 				</td>
-				<td><?= $d['deskripsi']; ?></td>
-				<td><?= $d['created']; ?></td>
+                            <td><?= $d['created']; ?></td>
+				<td class="text-justify" style="width: 300px; height:300px"><?= $d['deskripsi']; ?></td>
 
 
 				<td>

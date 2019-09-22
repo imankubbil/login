@@ -34,6 +34,7 @@
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/util.css">
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/main.css">
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -48,7 +49,7 @@
         </div>
 
         <span class="topbar-child1">
-          Check Our Promotion in Selma By Informa
+          Check Our Promotion on Selma By Informa
         </span>
 
       </div>
@@ -69,15 +70,15 @@
               </li>
 
               <li>
-                <a href="#">Product</a>
+                <a href="<?= base_url('Frontend/product'); ?>">Product</a>
               </li>
 
               <li>
-                <a href="#">About Us</a>
+                <a href="<?= base_url('Frontend/about'); ?>">About Us</a>
               </li>
 
               <li>
-                <a href="#">Career</a>
+                <a href="<?= base_url('Frontend/career'); ?>">Career</a>
               </li>
             </ul>
           </nav>
@@ -154,14 +155,14 @@
           </li>
 
           <li class="item-menu-mobile">
-            <a href="product.html">Product</a>
+            <a href="<?= base_url('Frontend/product'); ?>">Product</a>
           </li>
           <li class="item-menu-mobile">
-            <a href="blog.html">About Us</a>
+            <a href="<?= base_url('Frontend/about'); ?>">About Us</a>
           </li>
 
           <li class="item-menu-mobile">
-            <a href="about.html">Career</a>
+            <a href="<?= base_url('Frontend/career'); ?>">Career</a>
           </li>
 
         </ul>
