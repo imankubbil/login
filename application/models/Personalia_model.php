@@ -146,4 +146,33 @@ class Personalia_model extends CI_Model
         return $this->db->update('job_vacancy', $data);
 	}
 
+
+	public function getJobApplicant($id)
+	{
+
+		$personal = $this->db->select('*')->from('personal')->where('id_personal', $id)->get()->row_array();
+
+		$allpersonal = $this->db->select('*')->from('personal')->where('id_personal', $personal['id_personal'])->get()->result_array();
+
+		$education = $this->db->select('*')->from('education')->where('email', $personal['email'])->get()->result_array();
+
+		$family_data = $this->db->select('*')->from('family_data')->where('email', $personal['email'])->get()->result_array();
+
+		$work_history = $this->db->select('*')->from('work_history')->where('email', $personal['email'])->get()->result_array();
+
+		$self_concept = $this->db->select('*')->from('self_concept')->where('email', $personal['email'])->get()->result_array();
+
+
+		$data['personal'] = $personal['id_personal'];
+		$data['allpersonal'] = $allpersonal;
+		$data['education'] = $education;
+		$data['family'] = $family_data;
+		$data['work_history'] = $work_history;
+		$data['self_concept'] = $self_concept;
+
+
+		return $data;
+
+
+	}
 }

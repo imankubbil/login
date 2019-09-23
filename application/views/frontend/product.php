@@ -15,21 +15,17 @@
 	<div class="container p-t-30">
 		<a href="<?= base_url('Frontend/product'); ?>" class="m-t-4" style="color:red;"><h2 class="m-text5">All Product</h2></a>       
 	<div class="row p-t-30">
-        <?php foreach ($product as $p) : ?>
-        <div class="col-sm-10 col-md-8 col-lg-4">
-          <!-- block1 -->
-          <div class="block1 hov-img-zoom pos-relative m-b-30">
-            <a href="<?= base_url(); ?>Frontend/detailProduct/<?= $p['id_product']; ?>">
-              <img src="<?= base_url('assets/img/product/') . $p['image']; ?>" alt="IMG-BENNER" style="width: 300px; height: 300px;">
-              <h4 class="s-text12 p-t-10 p-b-10">
-          		<?= $p["product_name"]; ?>
-        	  </h4>
-        	  <a href="<?= base_url(); ?>Frontend/detailProduct/<?= $p['id_product']; ?>" class="btn btn-primary">See Detail</a>
-            </a>
-          </div>
-        </div>
-        <?php endforeach; ?>
+  <?php foreach ($product as $p) : ?>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <!-- block1 -->
+      <div class="block1 hov-img-zoom pos-relative m-b-30">
+        <a href="<?= base_url(); ?>Frontend/detailProduct/<?=$p['id_product'];?>">
+          <img src="<?= base_url('assets/img/product/') . $p['image']; ?>" alt="IMG-BENNER" style="width: 300px; height: 300px;">
+          <h4 class="s-text8 p-t-10 p-b-10" style="color:black;"><?= $p["product_name"]; ?></h4>
+    	     <a href="<?= base_url(); ?>Frontend/detailProduct/<?= $p['id_product']; ?>" class="btn btn-primary">See Detail</a>
+        </a>
       </div>
-
+    </div>
+    <?php endforeach; ?>
 	</div>
 </section>

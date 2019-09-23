@@ -2,18 +2,18 @@
              <div class="container-fluid">
 
                  <!-- Page Heading -->
-                 <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+                 <h1 class="h3 mb-4 text-gray-800 text-center"><?= $title; ?></h1>
                  <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>">
                  </div>
-                 <!-- <div class="row">
-                     <div class="col-lg-8">
-                         <?= $this->session->flashdata('message'); ?>
-                     </div>
-                 </div> -->
-                 <input type="hidden" value="<?= $this->session->flashdata('show') ?>" id="show_edit">
-                 <div class="card border-success mb-3 col-lg">
+
+                 <div class="row">
+
+                     <input type="hidden" value="<?= $this->session->flashdata('show') ?>" id="show_edit">
+                 <div class="card border-success col-lg-6">
                      <div class="card-body text-success">
-                         <h1 class="card-title text-center">Fill Out All This Forms Below!</h1>
+                         <h3 class="card-title text-center">Fill Out All This Forms Below!</h3>
+                         <div class="table-responsive">
+                             
                          <table class="table table-hover mt-4">
                              <tr id="personal_data">
                                  <td style="color:black; font-weight: bold">Personal Data</td>
@@ -68,11 +68,33 @@
                                  </td>
                              </tr> -->
                          </table>
+                         </div>
                          <!-- <a href="<?= base_url('career/exam'); ?>" class="btn btn-primary" title="apply" id="name">Apply and Send</a> -->
                          <button class="btn btn-primary" title="apply" id="name" data-toggle="modal" data-target="#modal_lanjut_psikotest" <?php if($user_answer > 0) { echo "hidden";}?>>Apply and Send</button>
 
                      </div>
                  </div>
+
+                    <div class="col-lg-6">
+                        <div class="card mt-4">
+                            <div class="card-body ">
+                                <h4 style="color:black; font-weight: bold">Rules :</h4>
+                                <ul>
+                                    <li>Isi semua form data lamaran kerja disamping ini</li>
+                                    <li>Setelah form terisi klik tombol Apply and Send</li>
+                                    <li>Lanjutkan untuk melakukan Psikotest</li>
+                                    <li>Setelah Psikotest, tunggu Email kelulusan yang dikirimkan oleh pihak Personalia Selma By Informa</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+
+
+
+                
 
 
 

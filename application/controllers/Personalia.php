@@ -259,7 +259,24 @@ class Personalia extends CI_Controller
             }
             redirect('personalia/jobvacancy');
 
+        }
     }
-}
+
+
+    public function detailJobApplicant($id)
+    {
+        $data['title'] = 'Detail Job Applicant';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+
+
+        $data['data'] = $this->Personalia_model->getJobApplicant($id);
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('personalia/detail-jobapplicant', $data);
+            $this->load->view('templates/footer');
+    }
 
 }

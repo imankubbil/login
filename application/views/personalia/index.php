@@ -3,7 +3,7 @@
 
        	<!-- Page Heading -->
        	<h1 class="h3 mb-4 text-gray-800 text-center"><?= $title; ?></h1>
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD
 
 =======
         <div class="row mt-3">
@@ -34,7 +34,7 @@
           </div>
         </div>
         
->>>>>>> lekha
+>>>>>>> lekha -->
         <div class="row mt-3">
           <div class="col-lg">
             <div class="card">
@@ -66,7 +66,7 @@
                      <td><?= $d['email']; ?></td>
                      <td><?= $d['alamat']; ?></td>
                      <td>
-                       <a href="" class="badge badge-success">Detail</a>
+                       <a href="<?= base_url(); ?>Personalia/detailJobApplicant/<?= $d['id_personal']; ?>" class="badge badge-success">Detail</a>
                        <?=form_open('auth/informationPsikotest');?>
                           <input type="text" name="email" value="<?=$d['email']?>" hidden>
                           <button type="submit" class="badge badge-danger">Send Email</button>
