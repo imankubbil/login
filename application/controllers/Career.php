@@ -548,17 +548,34 @@ class Career extends CI_Controller
                     $data_get_submit[$i-1]['id_question']   = $implode[1];
                     $data_get_submit[$i-1]['urutan']        = $implode[2];
                 } else {
-                    $implode = explode("-", $data_input);
                     $data_get_submit[$i-1]['email']         = $this->input->post('email', TRUE);
                     $data_get_submit[$i-1]['id_answer']     = "";
                     $data_get_submit[$i-1]['id_question']   = "";
                     $data_get_submit[$i-1]['urutan']        = "";
                 }
             }
+            
+            $jumlah_benar = 0;
+            foreach($data_get_submit as $jml){
+                $jumlah_benar = $jumlah_benar + (int)get_status($jml['id_answer'], $jml['id_question'], $jml['urutan']);
+            }
+
+            $nilai = ($jumlah_benar / $count) * 100;
 
             $result = $this->career_model->insert_user_answer($data_get_submit);
             if ($result > 0) {
-                $this->session->set_flashdata('message', 'Has Been Sent');
+                $data_insert_user_psikotest = [
+                    'email' => $this->input->post('email', TRUE),
+                    'nilai_psikotest' => floor($nilai),
+                    'waktu_test'    => date('Y-m-d')
+                ];
+
+                $result_insert = $this->db->insert('user_psikotest', $data_insert_user_psikotest);
+                if ($result_insert > 0) {
+                    $this->session->set_flashdata('message', 'Has Been Sent');
+                } else {
+                    $this->session->set_flashdata('message', 'Has Not Been Sent');
+                }
             } else {
                 $this->session->set_flashdata('message', 'Has Not Been Sent');
             }

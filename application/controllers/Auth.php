@@ -73,9 +73,6 @@ class Auth extends CI_Controller
 		}
 	}
 
-
-
-
 	public function registration()
 	{
 		if ($this->session->userdata('email')) {
@@ -147,9 +144,9 @@ class Auth extends CI_Controller
 	{
 		$config = array(
 			'protocol' => 'smtp',
-			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_host' => 'ssl://smtp.gmail.com',
 			'smtp_user' => 'sholehatilekha@gmail.com',
-			'smtp_pass' => 'gdragon18',
+			'smtp_pass' => 'Agustus18081988',
 			'smtp_port' => 465,
 			'mailtype'  => 'html',
 			'charset' 	=> 'utf-8',
@@ -159,15 +156,21 @@ class Auth extends CI_Controller
 		$this->load->library('email', $config);
 		$this->email->initialize($config);
 
-		$this->email->from('sholehatilekha@gmail.com', 'Selma By Informa');
+		$this->email->from('no_reply@selma.com', 'Selma By Informa');
 		$this->email->to($this->input->post('email'));
 
 		if ($type == 'verify') {
 			$this->email->subject('Account Verification');
-			$this->email->message('Click this link to verify your account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+			$this->email->message('Click this link to verify your account : <a href="'. base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
 		} else if ($type == 'forgot') {
 			$this->email->subject('Reset Password');
-			$this->email->message('Click this link to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+			$this->email->message('Click this link to reset your password : <a href="'. base_url() .'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+		} else if($type == 'job_application') {
+			$this->email->subject('Information Psikotest');
+			$data_information['email'] = $this->input->post('email', TRUE);
+			$data_information['token'] = $token;
+			$content = $this->load->view('send_email/information_psikotest', $data_information, TRUE);
+			// $this->email->message($content);
 		}
 
 		if ($this->email->send()) {
@@ -275,10 +278,9 @@ class Auth extends CI_Controller
 		$token = $this->input->get('token');
 
 		$user = $this->db->get_where('user', array('email' => $email))->row_array();
-
+		
 		if ($user) {
 			$user_token = $this->db->get_where('user_token', array('token' => $token))->row_array();
-
 			if ($user_token) {
 				$this->session->set_userdata('reset_email', $email);
 				$this->changePassword();
@@ -311,9 +313,12 @@ class Auth extends CI_Controller
 			$password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
 			$email = $this->session->userdata('reset_email');
 
-			$this->db->set('password', $password);
-			$this->db->set('email', $email);
-			$this->db->update('user');
+			// $this->db->set('password', $password);
+			// $this->db->set('email', $email);
+
+			$data_update['password'] = $password;
+			$this->db->where('email', $email);
+			$this->db->update('user', $data_update);
 
 			$this->session->unset_userdata('reset_email');
 
@@ -321,5 +326,41 @@ class Auth extends CI_Controller
 			Password has been changed! Please Login</div>');
 			redirect('auth');
 		}
+	}
+
+	public function informationPsikotest()
+	{
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+
+		if ($this->form_validation->run() == false) {
+			redirect('personalia');
+		} else {
+			$email = $this->input->post('email');
+			$user = $this->db->get_where('user', array('email' => $email, 'is_active' => 1))->row_array();
+
+			if ($user) {
+				$token = md5(random_string('numeric', 16));
+				$user_token = array(
+					'email' => $email,
+					'token' => $token,
+					'date_created' => time()
+				);
+				$this->db->insert('user_token', $user_token);
+				$this->_sendEmail($token, 'job_application');
+
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+			Has been send email</div>');
+				redirect('personalia');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+			Has not been send email</div>');
+				redirect('personalia');
+			}
+		}
+	}
+
+	public function information()
+	{
+		echo "ini information";
 	}
 }
