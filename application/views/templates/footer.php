@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
   <div class="container my-auto">
     <div class="copyright text-center my-auto">
-      <span>Copyright &copy; Aplikasi Login <?= date('Y'); ?></span>
+      <span>Copyright &copy; Sistem Informasi Personalia <?= date('Y'); ?>, By Lekha Sholehati</span>
     </div>
   </div>
 </footer>
@@ -57,6 +57,7 @@
 
 <script src="<?= base_url('assets/js/dataTables/datatables.min.js') ?>"></script>
 <script src="<?= base_url('assets/js/tinymce/tinymce.min.js') ?>"></script>
+<?php echo '<script>'.$this->session->flashdata('error').'</script>'?>
 
 <script type="text/javascript">
   function waktuHabis(){
@@ -98,6 +99,8 @@
 		onTick: hampirHabis
 		});	
 	})
+
+  // $('#mdb-lightbox-ui').load("mdb-addons/mdb-lightbox-ui.html");
 </script>
 
 <script>
@@ -256,6 +259,14 @@
         minViewMode: "years"
       });
 
+    $("#datepickerMonth").datepicker( {
+   format: 'MM yyyy',
+                viewMode: "months",
+                minViewMode: "months",
+                autoClose: true
+    });
+
+
     // Pengaturan untuk form work history
     $("#tambah").on('click', function() {
       $("#dua").show();
@@ -374,6 +385,13 @@
 
     return true;
   }
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> lekha
 </script>
 
 </body>

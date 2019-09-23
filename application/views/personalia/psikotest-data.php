@@ -16,7 +16,9 @@
         <div class="col-lg">
           <div class="card">
             <div class="card-body">
-              <table class="table table-hover mt-3"> 
+            <div class="table-responsive">
+              
+            <table class="table table-hover mt-3" id="tabel_data_pelamar"> 
                 <thead>
                   <tr>
                     <th>#</th>
@@ -39,8 +41,7 @@
                 
                 <td>
                   <a href="<?= base_url(); ?>Personalia/detailPsikotest/<?= $d['id_question']; ?>" class="badge badge-success">Detail</a>
-                  <!-- <a href="<?= base_url(); ?>Personalia/editPsikotest/<?= $d['id_question']; ?>" class="badge badge-warning">Edit</a>
- -->                  <a href="<?= base_url(); ?>Personalia/deletePsikotest/<?= $d['id_question']; ?>" class="badge badge-danger tombol-hapus">Delete</a>
+                  <a href="<?= base_url(); ?>Personalia/deletePsikotest/<?= $d['id_question']; ?>" class="badge badge-danger tombol-hapus">Delete</a>
 
                 </td>
               </tr>
@@ -48,6 +49,8 @@
             <?php endforeach; ?>
           </tbody>
         </table>
+        </div>
+
 
       </div>
     </div>
