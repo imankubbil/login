@@ -7,14 +7,14 @@
            		<div class="card mb-3 col-lg">
                <div class="row no-gutters">
                    <div class="col-md-4">
-                       <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img mt-2" style="width: 250px; height: 250px;">
+                       <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img mt-2" style="width: 200px; height: 200px;">
                    </div>
                    <div class="col-md-8">
                        <div class="card-body">
                            <p class="card-text text-center">Nilai Psikotest</p>
                            <table class="table">
                                <tr>
-                                   <td><?= $data['nama']; ?></td>
+                                   <td><?= print_r($data['allpersonal']); ?></td>
                                </tr>
                            </table>
                        </div>

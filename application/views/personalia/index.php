@@ -14,7 +14,7 @@
                   <label><strong>Sort By </strong></label>
                   <div class="form-group col-md-4">
                     <select class="form-control" name="jenjang" id="jenjang" style="border-color: #228B22;">
-                      <option value="">-- Jenjang Pendidikan --</option>
+                      <option value="">Jenjang Pendidikan /option>
                       <option value="SD">SD</option>
                       <option value="SMP">SMP</option>
                       <option value="SMA/SMK">SMA/SMK</option>
@@ -65,8 +65,9 @@
                      <td><?= $d['nilai']; ?></td>
                      <td><?= $d['email']; ?></td>
                      <td><?= $d['alamat']; ?></td>
-                     <td>
+                     <td class="text-center">
                        <a href="<?= base_url(); ?>Personalia/detailJobApplicant/<?= $d['id_personal']; ?>" class="badge badge-success">Detail</a>
+                       <a href="" class="badge badge-warning">Delete</a>
                        <?=form_open('auth/informationPsikotest');?>
                           <input type="text" name="email" value="<?=$d['email']?>" hidden>
                           <button type="submit" class="badge badge-danger">Send Email</button>

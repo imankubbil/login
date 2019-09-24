@@ -272,6 +272,9 @@ class Personalia extends CI_Controller
 
         $data['data'] = $this->Personalia_model->getJobApplicant($id);
 
+        // echo json_encode($data);
+        // die();
+
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
