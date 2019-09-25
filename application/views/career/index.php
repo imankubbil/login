@@ -58,15 +58,19 @@
                                      <div class="badge badge-success">Sudah diisi</div>
                                  </td>
                                  <td><a href="<?= base_url('career/selfConcept'); ?>" class="btn btn-primary" <?php if($concept > 0) { echo "hidden";}?>>Fill Form</a>
-                                     <a href="<?= base_url('career/selfEdit'); ?>" class="btn btn-warning" id="edit_self">Edit Form</a>
+                                    <?php if($concept > 0 ) : ?>
+                                        <a href="<?= base_url('career/selfEdit'); ?>" class="btn btn-warning" id="edit_self">Edit Form</a>
+                                    <?php else : ?>
+                                        <button class="btn btn-warning" disabled> Edit Form</button>
+                                    <?php endif;?>
                                  </td>
                              </tr>
-                             <!-- <tr id="upload_file">
+                             <tr id="upload_file">
                                  <td style="color:black; font-weight: bold">Upload File</td>
                                  <td><a href="<?= base_url('career/uploadFile'); ?>" class="btn btn-primary">Fill Form</a>
                                      <a href="<?= base_url('career/uploadEdit'); ?>" class="btn btn-warning" id="edit_self">Edit Form</a>
                                  </td>
-                             </tr> -->
+                             </tr>
                          </table>
                          </div>
                          <!-- <a href="<?= base_url('career/exam'); ?>" class="btn btn-primary" title="apply" id="name">Apply and Send</a> -->

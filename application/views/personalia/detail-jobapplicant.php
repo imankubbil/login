@@ -14,11 +14,27 @@
                            <p class="card-text text-center">Nilai Psikotest</p>
                            <table class="table">
                                <tr>
-                                   <td><?= print_r($data['allpersonal']); ?></td>
+                                   <td class="text-center"><h1><?=$data['user_psikotest']['nilai_psikotest']; ?></h1></td>
                                </tr>
                            </table>
                        </div>
                    </div>
+               </div>
+
+               <div>
+               	<table>
+               		<thead>
+               			<tr>
+               				<th>header</th>
+               			</tr>
+               		</thead>
+               		<tbody>
+               			<tr>
+               				<td>data</td>
+               			</tr>
+               		</tbody>
+               	</table>
+               	
                </div>
            </div>
      

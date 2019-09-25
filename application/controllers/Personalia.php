@@ -18,6 +18,10 @@ class Personalia extends CI_Controller
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
        
         $data['data'] = $this->Personalia_model->getData();
+        // $data['data'] = $this->Personalia_model->getJob();
+
+        // echo json_encode($data);
+        // die();
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
