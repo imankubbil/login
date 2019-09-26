@@ -24,6 +24,7 @@ class Career extends CI_Controller
         $data['family']   = $this->db->get_where('family_data', ['email' => $this->session->userdata('email')])->num_rows();
         $data['concept']   = $this->db->get_where('self_concept', ['email' => $this->session->userdata('email')])->num_rows();
         $data['user_answer'] = $this->db->get_where('user_answer', ['email' => $this->session->userdata('email')])->num_rows();
+        $data['upload'] = $this->db->get_where('upload_file', ['email' => $this->session->userdata('email')])->num_rows();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -405,17 +406,9 @@ class Career extends CI_Controller
         $data['title'] = 'Upload File';
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
-        $this->form_validation->set_rules('no_ktp', 'No KTP', 'required|trim');
-        // $this->form_validation->set_rules('foto_ktp', 'Scan KTP', 'required|trim');
-        $this->form_validation->set_rules('no_ijazah', 'No Ijazah', 'required|trim');
-        // $this->form_validation->set_rules('foto_ijazah', 'Scan Ijazah', 'required|trim');
-        $this->form_validation->set_rules('no_npwp', 'No NPWP', 'required|trim');
-        // $this->form_validation->set_rules('foto_npwp', 'Scan NPWP', 'required|trim');
-        $this->form_validation->set_rules('skck', 'SKCK', 'required|trim');
-        // $this->form_validation->set_rules('foto_skck', 'Scan SKCK', 'required|trim');
+       
         $this->form_validation->set_rules('sertifikat', 'Sertifikat', 'required|trim');
-        // $this->form_validation->set_rules('foto_sertifikat', 'Scan Sertifikat', 'required|trim');
-        // $this->form_validation->set_rules('foto_transkrip', 'Scan Transkrip', 'required|trim');
+        
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -426,42 +419,21 @@ class Career extends CI_Controller
         } else {
             $data_insert = [
                 'email' => $this->input->post('email', true),
-                'no_ktp' => $this->input->post('no_ktp', true),
-                'no_ijazah' => $this->input->post('no_ijazah', true),
-                'no_npwp' => $this->input->post('no_npwp', true),
-                'skck' => $this->input->post('skck', true),
                 'sertifikat' => $this->input->post('sertifikat', true),
                 'foto_ktp' => $_FILES['foto_ktp']['name'],
                 'foto_ijazah' => $_FILES['foto_ijazah']['name'],
-                'foto_npwp' => $_FILES['foto_npwp']['name'],
-                'foto_skck' => $_FILES['foto_skck']['name'],
                 'foto_sertifikat' => $_FILES['foto_sertifikat']['name'],
                 'foto_transkrip_nilai' => $_FILES['foto_transkrip_nilai']['name']
             ];
 
-            // $data_upload = [
-            //     'foto_ktp' => $_FILES['foto_ktp']['tmp_name'],
-            //     'foto_ijazah' => $_FILES['foto_ijazah']['tmp_name'],
-            //     'foto_npwp' => $_FILES['foto_npwp']['tmp_name'],
-            //     'foto_skck' => $_FILES['foto_skck']['tmp_name'],
-            //     'foto_sertifikat' => $_FILES['foto_sertifikat']['tmp_name'],
-            //     'foto_transkrip_nilai' => $_FILES['foto_transkrip_nilai']['tmp_name']
-            // ];
-
-            // $file_name['name'] = $this->multiple_upload();
             $file_name = $this->multiple_upload($_FILES['foto_ktp']['tmp_name']);
             $file_name = $this->multiple_upload($_FILES['foto_ijazah']['tmp_name']);
-            $file_name = $this->multiple_upload($_FILES['foto_npwp']['tmp_name']);
-            $file_name = $this->multiple_upload($_FILES['foto_skck']['tmp_name']);
             $file_name = $this->multiple_upload($_FILES['foto_sertifikat']['tmp_name']);
             $file_name = $this->multiple_upload($_FILES['foto_transkrip_nilai']['tmp_name']);
         
             $this->db->insert('upload_file', $data_insert);
-            $this->session->set_flashdata('message', 'file has been sent','<ul><li>'.$file_name['name'].'</li></ul>');
-            // echo "<ul class='list-group'>";
-            // echo "<li class='list-group-item'>".$file_name;
-            // echo "</li>";
-            // echo "</ul>";
+            $this->session->set_flashdata('message', 'file has been sent');
+            
             redirect('career');
 
         }
@@ -478,8 +450,6 @@ class Career extends CI_Controller
          $this->load->library('upload', $config);
          $file_name['name'] = $this->do_upload('foto_ktp');
          $file_name['name'] = $this->do_upload('foto_ijazah');
-         $file_name['name'] = $this->do_upload('foto_npwp');
-         $file_name['name'] = $this->do_upload('foto_skck');
          $file_name['name'] = $this->do_upload('foto_sertifikat');
          $file_name['name'] = $this->do_upload('foto_transkrip_nilai');
 

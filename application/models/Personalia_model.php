@@ -166,15 +166,18 @@ class Personalia_model extends CI_Model
 
 		$user_psikotest = $this->db->select('*')->from('user_psikotest')->where('email', $personal['email'])->get()->row_array();
 
+		$user_jobvacancy = $this->db->select('*')->from('user_jobvacancy')->where('email', $personal['email'])->get()->row_array();
+
 
 
 		$data['personal'] = $personal['id_personal'];
 		$data['allpersonal'] = $allpersonal;
 		$data['education'] = $education;
-		$data['family'] = $family_data;
+		$data['family_data'] = $family_data;
 		$data['work_history'] = $work_history;
 		$data['self_concept'] = $self_concept;
 		$data['user_psikotest'] = $user_psikotest;
+		$data['user_jobvacancy'] = $user_jobvacancy;
 
 		return $data;
 

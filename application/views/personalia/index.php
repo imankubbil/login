@@ -37,7 +37,7 @@
                      <td><?= $d['alamat']; ?></td>
                      <td class="text-center">
                        <a href="<?= base_url(); ?>Personalia/detailJobApplicant/<?= $d['id_personal']; ?>" class="badge badge-success">Detail</a>
-                       <a href="" class="badge badge-warning">Delete</a>
+                    
                        <?=form_open('auth/informationPsikotest');?>
                           <input type="text" name="email" value="<?=$d['email']?>" hidden>
                           <button type="submit" class="badge badge-danger">Send Email</button>

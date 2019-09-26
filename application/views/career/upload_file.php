@@ -14,10 +14,7 @@
                                    <div class="form-group col-lg-12">
                                        <input type="email" id="email" name="email" class="form-control" value="<?= $user['email']; ?>" hidden><?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                                    </div>
-                                    <div class="form-group col-md-6">
-                                       <label for="no_ktp"><strong>No KTP</strong></label>
-                                       <input type="text" id="no_ktp" name="no_ktp" class="form-control" placeholder="No KTP" value="<?= set_value('no_ktp'); ?>"><?= form_error('no_ktp', '<small class="text-danger pl-3">', '</small>'); ?>
-                                   </div>
+                                   
                                    <div class="form-group col-md-6">
                                        <label for="foto_ktp"><strong>File Scan KTP</strong></label>
                                        <div class="custom-file">
@@ -27,10 +24,7 @@
                                          <?= form_error('foto_ktp', '<small class="text-danger pl-3">', '</small>'); ?>
                                          </div>
                                    </div>
-                                   <div class="form-group col-md-6">
-                                       <label for="no_ijazah"><strong>No IJazah Terakhir</strong></label>
-                                       <input type="text" id="no_ijazah" name="no_ijazah" class="form-control" placeholder="No Ijazah" value="<?= set_value('no_ijazah'); ?>"><?= form_error('no_ijazah', '<small class="text-danger pl-3">', '</small>'); ?>
-                                   </div>
+                                
                                    <div class="form-group col-md-6">
                                        <label for="foto_ijazah"><strong>File Scan Ijazah</strong></label>
                                        <div class="custom-file">
@@ -40,32 +34,7 @@
                                          <?= form_error('foto_ijazah', '<small class="text-danger pl-3">', '</small>'); ?>
                                          </div>
                                    </div>
-                                   <div class="form-group col-md-6">
-                                       <label for="no_npwp"><strong>No NPWP</strong></label>
-                                       <input type="text" id="no_npwp" name="no_npwp" class="form-control" placeholder="No NPWP" value="<?= set_value('no_npwp'); ?>"><?= form_error('no_npwp', '<small class="text-danger pl-3">', '</small>'); ?>
-                                   </div>
-                                   <div class="form-group col-md-6">
-                                       <label for="foto_npwp"><strong>File Scan NPWP</strong></label>
-                                       <div class="custom-file">
-                                         <input type="file" class="custom-file-input" id="foto_npwp" name="foto_npwp">
-                                         <label class="custom-file-label" for="image">Choose file</label>
-                                         <small class="text-primary pl-3"><em>Upload file with Extension : Png/Jpg/Jpeg, Max:2MB</em></small>
-                                         <?= form_error('foto_npwp', '<small class="text-danger pl-3">', '</small>'); ?>
-                                         </div>
-                                   </div>
-                                   <div class="form-group col-md-6">
-                                       <label for="skck"><strong>Akhir Valid SKCK</strong></label>
-                                       <input type="date" id="skck" name="skck" class="form-control" value="<?= set_value('skck'); ?>"><?= form_error('skck', '<small class="text-danger pl-3">', '</small>'); ?>
-                                   </div>
-                                   <div class="form-group col-md-6">
-                                       <label for="foto_skck"><strong>File Scan SKCK</strong></label>
-                                       <div class="custom-file">
-                                         <input type="file" class="custom-file-input" id="foto_skck" name="foto_skck">
-                                         <label class="custom-file-label" for="image">Choose file</label>
-                                         <small class="text-primary pl-3"><em>Upload file with Extension : Png/Jpg/Jpeg, Max:2MB</em></small>
-                                         <?= form_error('foto_skck', '<small class="text-danger pl-3">', '</small>'); ?>
-                                         </div>
-                                   </div>
+                                  
                                    <div class="form-group col-md-6">
                                        <label for="sertifikat"><strong>Nama Sertifikat</strong></label>
                                        <input type="text" id="sertifikat" name="sertifikat" class="form-control" placeholder="Nama sertifikat" value="<?= set_value('sertifikat'); ?>"><?= form_error('sertifikat', '<small class="text-danger pl-3">', '</small>'); ?>

@@ -385,13 +385,7 @@
 
     return true;
   }
-// <<<<<<< HEAD
-// =======
 
-
-
-
-// >>>>>>> lekha
 </script>
 
 </body>
