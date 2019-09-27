@@ -15,10 +15,11 @@
 	          We are Hiring for
 	        </h3>
 	      </div>
-		<div class="row justify-content-center">
-			<div class="card">
-				<!-- <div class="col-lg"> -->
-					<?php foreach ($job as $j) : ?>
+		<div class="row justify-content-center mb-4">
+			<div class="col-md-8">
+				<div class="card border-primary">
+					<div class="card-body text-primary">
+						<?php foreach ($job as $j) : ?>
 						<table class="table table-bordered">
 							<thead>
 								<tr>
@@ -30,7 +31,7 @@
 									<td style="color:black;"><h4>Requirements :</h4></td>
 								</tr>
 								<tr>
-									<td><h5 style="color:black;"><?= $j["deskripsi"]; ?></h5></td>
+									<td><h3 style="color:black"><?= $j["deskripsi"]; ?></h3></td>
 								</tr>
 								<tr>
 									<td><a href="<?= base_url('Auth'); ?>" class="btn btn-primary m-l-4 m-t-4 m-b-4 ">Apply Job</a></h5></td>
@@ -38,7 +39,11 @@
 							</tbody>
 						</table>
 					<?php endforeach; ?>
-				<!-- </div> -->
+						
+					</div>
+
+
+				</div>
 			</div>
 		</div>
 	</div>
