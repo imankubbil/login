@@ -64,14 +64,8 @@ class Personalia_model extends CI_Model
 	public function psikotestData()
 	{
 
-		// $query = "SELECT * FROM question LEFT JOIN answer ON question.id_question = answer.id_question WHERE answer.status = 1 ORDER BY question.id_question DESC
-		// ";
-		// return $this->db->query($query)->result_array();
-
 		$query = $this->db->select('*')->from('question')->join('answer', 'question.id_question = answer.id_question')->where('answer.status', 1)->order_by('question.id_question', 'DESC')->get()->result_array();
 		return $query;
-
-
 	}
 
 	public function getPsikotestById($id)
@@ -160,7 +154,7 @@ class Personalia_model extends CI_Model
 
 		$family_data = $this->db->select('*')->from('family_data')->where('email', $personal['email'])->get()->row_array();
 
-		$work_history = $this->db->select('*')->from('work_history')->where('email', $personal['email'])->get()->row_array();
+		$work_history = $this->db->select('*')->from('work_history')->where('email', $personal['email'])->get()->result_array();
 
 		$self_concept = $this->db->select('*')->from('self_concept')->where('email', $personal['email'])->get()->row_array();
 

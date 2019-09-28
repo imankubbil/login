@@ -273,7 +273,6 @@ class Personalia extends CI_Controller
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
 
-
         $data['data'] = $this->Personalia_model->getJobApplicant($id);
 
         // echo json_encode($data);
