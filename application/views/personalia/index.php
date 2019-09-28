@@ -1,45 +1,10 @@
      <div class="container-fluid">
        	<h1 class="h3 mb-4 text-gray-800 text-center"><?= $title; ?></h1>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
         <div class="row mt-3">
           <div class="col-lg">
             <div class="card">
               <div class="card-body">
-                <div class="row col-md mt-4">
-                  <label><strong>Sort By </strong></label>
-                  <div class="form-group col-md-4">
-                    <select class="form-control" name="jenjang" id="jenjang" style="border-color: #228B22;">
-                      <option value="">-- Jenjang Pendidikan --</option>
-                      <option value="SD">SD</option>
-                      <option value="SMP">SMP</option>
-                      <option value="SMA/SMK">SMA/SMK</option>
-                      <option value="D3">D3</option>
-                      <option value="S1">S1</option>
-                      <option value="S2">S2</option>
-                      <option value="S3">S3</option>
-                      <option value="lainnya">Lainnya</option>
-                    </select>
-                  </div>  
-                  <div class="col-md-4">
-                    <button type="button" class="form-control btn btn-success"><i class="fas fa-edit"></i> Nilai Psikotest</button>
-                  </div>         
-                </div>
-              </div> 
-            </div>
-          </div>
-        </div>
-        
->>>>>>> origin/lekha
-=======
->>>>>>> 00402915edd3cd477a6db818023160bd902490ff
-        <div class="row mt-3">
-          <div class="col-lg">
-            <div class="card">
-              <div class="card-body">
-                <a type="button" href="<?=base_url()?>print_laporan/print_data_job_applicant" title="Print Data" class="btn btn-primary float-right mb-4"> <i class="fa fa-print"></i> Print</a>
+                <a type="button" href="javascript: w=window.open('<?=base_url()?>print_laporan/print_data_job_applicant', 'newwindow', 'width=1300', 'height=650'); w.focus(); w.print();" title="Print Data" class="btn btn-primary float-right mb-4"> <i class="fa fa-print"></i> Print</a>
                 <div class="table-responsive">
                   <?= $this->session->flashdata('message'); ?>
                   <table class="table table-hover mt-3" id="tabel_data_pelamar"> 
@@ -72,11 +37,11 @@
                          <td><?= $keterangan = ($d['nilai_psikotest'] >= 75) ? 'Lulus Psikotest' : 'Tidak Lulus'; ?></td>
                          <td class="text-center">
                            <a href="<?= base_url(); ?>Personalia/detailJobApplicant/<?= $d['id_personal']; ?>" class="badge badge-success">Detail</a>
-
-                           <?=form_open('auth/informationPsikotest');?>
+                          <a href="#modal_send_email" class="badge badge-danger" data-toggle="modal"> Send Email </a>
+                           <!-- <?=form_open('auth/informationPsikotest');?>
                            <input type="text" name="email" value="<?=$d['email']?>" hidden>
                            <button type="submit" class="badge badge-danger">Send Email</button>
-                           <?=form_close();?>
+                           <?=form_close();?> -->
                          </td>
                        </tr>
                        <?php $i++ ?>
@@ -84,11 +49,39 @@
                    </tbody>
                  </table>
                </div>
-
-
              </div>
            </div>
           </div>
         </div>
      </div>
    </div>
+   <div class="modal fade" id="modal_send_email" tabindex="-1" role="dialog" aria-labelledby="newSubMenuModalLabel" aria-hidden="true">
+           <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="newSubMenuModalLabel">Set Data Schedule</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                       </button>
+                   </div>
+                   <form action="<?= base_url('personalia/set_data_schedule'); ?>" method="post">
+                       <div class="modal-body">
+                           <div class="form-group">
+                              <label for="">Hari, Tanggal, Pukul</label>
+                              <div class="date_time_schedule">
+                                <input type="datetime-local" class="form-control" name="date_time_schedule" data-format="dd-mm-YYYY hh:mm:ss"><span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="">Lokasi</label>
+                               <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Lokasi">
+                           </div>
+                       </div>
+                       <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                           <button type="submit" class="btn btn-primary">Add</button>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div> 

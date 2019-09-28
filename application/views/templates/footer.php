@@ -52,6 +52,7 @@
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
 <script src="<?= base_url('assets/'); ?>js/boostrap-datepicker.js"></script>
+<script src="<?= base_url('assets/'); ?>js/bootstrap-datetimepicker.min.js"></script>
 <script src="<?= base_url('assets/'); ?>swal/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/script.js"></script>
 
@@ -107,6 +108,12 @@
   $(document).ready( function () {
     
     $('#tabel_data_pelamar').DataTable();
+    // $('.date_time_schedule').datetimepicker({
+    //   language : 'en'
+    // });
+    // $('#datetimepicker1').datetimepicker({
+    //   language: 'pt-BR'
+    // })
 
     tinymce.init({
       selector:'.editor_jobvacancy',
@@ -303,18 +310,6 @@
 
     return true;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> origin/lekha
-=======
-
-  
->>>>>>> 00402915edd3cd477a6db818023160bd902490ff
 </script>
 
 </body>

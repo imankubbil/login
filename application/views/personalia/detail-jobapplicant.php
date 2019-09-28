@@ -125,7 +125,6 @@
 									<th colspan="2"></th>
 								</tr>
 							<?php endif;?>
-							<?=$count_work_history?>
 						<?php $no++; endforeach;?>
 
 					</table>
@@ -189,16 +188,13 @@
 							<th>: <?= $data['self_concept']['kekurangan']; ?></th>
 						</tr>
 					</table>
-					<a href="#" class="btn btn-primary btn-lg  ml-4 mb-4">Print</a>
-					<a href="<?= base_url('personalia'); ?>" class="btn btn-warning btn-lg mb-4">Back</a>
+					<a type="button" href="javascript: w=window.open('<?=base_url()?>print_laporan/detail_job_applicant/<?=$this->uri->segment(3)?>', 'newwindow', 'width=1300', 'height=650'); w.focus(); w.print();" title="Print Data" class="btn btn-primary btn-lg ml-4 mb-4"> <i class="fa fa-print"></i> Print</a>
+					<a href="<?= base_url('personalia'); ?>" class="btn btn-warning btn-lg mb-4"><i class="fas fa-undo"></i> Back</a>
 				</div>
 			</div>
 
 		</div>
-
 	</div>
-
-
 </div>
 <!-- /.container-fluid -->
 
