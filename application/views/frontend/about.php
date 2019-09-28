@@ -1,13 +1,11 @@
 <section>
 	<div class="container">
-		<div class="row p-t-20 p-b-40 t-center">
+		<div class="row p-t-20 p-b-40 justify-content-center">
 			<img src="<?=base_url()?>assets/img/slider/1.png" style="width: 700px; height: 300px;">
 
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-lg">
-				<div class="card">
-					<div class="card-body">
 						<h3 class="m-text5 t-center p-b-30">What is Selma??</h3>
 						<p class="text-justify" style="color: black;"><strong>Selma By Informa adalah anak perusahaan Kawan Lama Group yang bergerak dibidang retail furnishing dan perabot rumah lainnya yang baru dibuka pada tahun 2017, sasaran pasar Selma adalah kalangan menengah kebawah untuk merangkul konsumen yang ingin barang berkualitas dengan harga terjangkau. Toko pertama Selma sendiri berada di Pusat Grosir Cililitan Jakarta Timur. Namun kedepannya Selma By Informa berencana membuka banyak cabang yang tersebar di seluruh wilayah Indonesia agar lebih dekat dengan konsumen.</strong></p>
 
@@ -17,8 +15,6 @@
 						<h3 class="m-text5 t-center p-b-30 p-t-30">Misi</h3>
 						<p class="t-center" style="color: black;"><strong>Kami bertujuan memberikan pilihan lengkap untuk produk berkualitas tinggi dengan harga kompetitif, ditunjang pelayanan oleh tim professional.</strong></p>
 						
-					</div>
-				</div>				
 			</div>			
 		</div>	
 	</div>

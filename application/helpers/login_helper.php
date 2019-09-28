@@ -82,3 +82,10 @@ function get_status($id_answer, $id_question, $urutan)
     $result = $CI->db->get_where('answer', ['id_question' => $id_question, 'id_answer' => $id_answer, 'urutan' => $urutan])->row_array();
     return $result['status'];
 }
+
+function getJobRequire($id_jobvacancy)
+{
+    $CI =& get_instance();
+    $result = $CI->db->get_where('job_vacancy', ['id_jobvacancy' => $id_jobvacancy])->row_array();
+    return $result['job_require'];
+}

@@ -7,7 +7,7 @@
 <!--===============================================================================================-->
   <!-- <link rel="icon" type="image/png" href="images/icons/favicon.png"/> -->
 <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendor/bootstrap2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->

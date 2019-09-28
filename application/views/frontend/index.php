@@ -74,10 +74,8 @@
         </h3>
       </div>
 
-      <div class="row">
-        <div class="col-lg">
-          <div class="card">
-            <div class="card-body">
+    <div class="col-lg">
+        <div class="row">
               <div class="col-md-4 hov-img-zoom">
                 <img src="<?=base_url()?>assets/img/articles/1.jpg" class="img-fluid" style="width:350px; height: 200px;">
               </div>
@@ -86,15 +84,11 @@
                  <p class="text-justify text-turncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sodales justo nec blandit. Etiam molestie urna sit amet pellentesque volutpat. Nam sem neque, auctor ut lobortis quis, aliquet eu neque. Fusce vestibulum, nisi et elementum porta, ex sem vehicula libero, quis viverra lacus mi quis magna. Sed tincidunt iaculis felis nec ornare. Morbi tincidunt eros ut purus pellentesque, vel eleifend nunc fermentum. Duis vel faucibus sapien.</p><br>
                  <a href="#" class="btn btn-success">Read More</a>
               </div>
-            </div>
-          </div>
         </div>   
       </div><br>
 
+    <div class="col-lg">
       <div class="row">
-        <div class="col-lg">
-          <div class="card">
-            <div class="card-body">
               <div class="col-md-4 hov-img-zoom">
                 <img src="<?=base_url()?>assets/img/articles/2.jpg" class="img-fluid" style="width:350px; height: 200px;">
               </div>
@@ -103,15 +97,12 @@
                  <p class="text-justify text-turncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sodales justo nec blandit. Etiam molestie urna sit amet pellentesque volutpat. Nam sem neque, auctor ut lobortis quis, aliquet eu neque. Fusce vestibulum, nisi et elementum porta, ex sem vehicula libero, quis viverra lacus mi quis magna. Sed tincidunt iaculis felis nec ornare. Morbi tincidunt eros ut purus pellentesque, vel eleifend nunc fermentum. Duis vel faucibus sapien.</p><br>
                 <a href="#" class="btn btn-success">Read More</a>
               </div>
-            </div>
-          </div>
-        </div>   
-      </div><br>
 
-      <div class="row">
-        <div class="col-lg">
-          <div class="card">
-            <div class="card-body">
+        </div>   
+    </div><br>
+
+      <div class="col-lg">
+        <div class="row">
               <div class="col-md-4 hov-img-zoom">
                 <img src="<?=base_url()?>assets/img/articles/4.jpg" class="img-fluid" style="width:350px; height: 200px;">
               </div>
@@ -120,11 +111,8 @@
                  <p class="text-justify text-turncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus sodales justo nec blandit. Etiam molestie urna sit amet pellentesque volutpat. Nam sem neque, auctor ut lobortis quis, aliquet eu neque. Fusce vestibulum, nisi et elementum porta, ex sem vehicula libero, quis viverra lacus mi quis magna. Sed tincidunt iaculis felis nec ornare. Morbi tincidunt eros ut purus pellentesque, vel eleifend nunc fermentum. Duis vel faucibus sapien.</p><br>
                 <a href="#" class="btn btn-success">Read More</a>
               </div>
-            </div>
-          </div>
         </div>   
       </div>
-
     </div>
   </section>
 

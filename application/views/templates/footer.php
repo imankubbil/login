@@ -105,6 +105,7 @@
 
 <script>
   $(document).ready( function () {
+    
     $('#tabel_data_pelamar').DataTable();
 
     tinymce.init({
@@ -165,90 +166,7 @@
     }
   }
 
-    // $('#upload_file').on('submit', function(e){
-    //   e.preventDefault();
-
-    //   Swal.fire({
-    //     title:'Apakah anda yakin?',
-    //     text:"Data ingin disimpan",
-    //     type:'warning',
-    //     showCancelButton: true,
-    //     confirmButtonColor: '#3085d6',
-    //     cancelButtonColor: '#d33',
-    //     confirmButtonText: 'Simpan Data!'
-    //   }).then((result) => {
-    //     if(result.value) {
-    //       $.ajax({
-    //         url: '<?=base_url('Career/uploadFile')?>',
-    //         type: 'POST',
-    //         // data : new FormData($('#upload_file')[0]),
-    //         contentType : false,
-    //         cache : false,
-    //         // dataType : 'JSON';
-    //         success : function(response) {
-    //           console.log(response);
-    //         }
-    //       });
-    //       // $.ajax({
-    //       //  url: '<?= base_url() ?>Career/uploadFile',
-    //       //  method: 'POST',
-    //       //  data: new FormData(),
-    //       //  dataType: 'JSON',
-    //       //  success: function(response){
-    //       //   console.log(response);
-    //       //  }
-    //       // })
-    //     }
-    //   });
-    // });
-
-    // Membuat fill form hide dan ubah background Personal
-    // $(document).ready(function() {
-    //     const show_edit = $('#show_edit').val();
-
-
-    //     if (show_edit != undefined && show_edit != null && show_edit != "") {
-    //         $('#ket_personal').show();
-    //         $('#edit_personal').show();
-    //         $('#fill_personal').hide();
-    //         $("tr[id='personal_data']").css("background-color", "#b4f2a2");
-    //     }
-
-
-
-    //     // untuk cek data apakah sudah diisi belum
-    //     ada_data();
-
-    //     function ada_data() {
-    //         $.ajax({
-    //             type: 'ajax',
-    //             url: '<?= base_url() ?>career/cekData',
-    //             async: true,
-    //             method: "POST",
-    //             dataType: 'json',
-    //             contentType: "application/json",
-    //             success: function(data) {
-    //                 console.log(data);
-    //                 // cara ambil data berdasarkan id
-    //                 // var id = data.personal['id'];
-    //                 if (data.personal == null || data.personal == "") {
-    //                     // console.log("hasil null");
-    //                     $('#fill_personal').show();
-    //                 } else {
-    //                     // console.log("data ada");
-    //                     $('#ket_personal').show();
-    //                     $('#fill_personal').hide();
-    //                     $('#edit_personal').show();
-    //                     $("tr[id='personal_data']").css("background-color", "#b4f2a2");
-    //                 }
-
-    //                 // if(data.personal != null){
-    //                 //     $('#edit_form').html(`<a href="<?= base_url() ?>career/personalEdit/`+id+`" class="btn btn-warning" id="edit_personal" style="display:none;">Edit Form</a>`)
-    //                 // }
-    //             }
-    //         });
-    //     }
-    // });
+  
 
     // membuat datepicker berdasarkan tahun saja
     $("#datepicker").datepicker({
@@ -386,12 +304,17 @@
     return true;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 
 
 
 >>>>>>> origin/lekha
+=======
+
+  
+>>>>>>> 00402915edd3cd477a6db818023160bd902490ff
 </script>
 
 </body>

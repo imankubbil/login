@@ -5,11 +5,13 @@ class Personalia_model extends CI_Model
 {
 	public function getData()
 	{
-		$query = "SELECT personal.*, education.*, user_psikotest.* FROM personal LEFT JOIN education ON personal.email = education.email LEFT JOIN user_psikotest ON education.email = user_psikotest.email ORDER BY id_personal ASC
+		$query = "SELECT personal.*, education.*, user_jobvacancy.*, user_psikotest.* FROM personal LEFT JOIN education ON personal.email = education.email LEFT JOIN user_psikotest ON education.email = user_psikotest.email LEFT JOIN user_jobvacancy ON personal.email = user_jobvacancy.email ORDER BY id_personal DESC
 		";
+
 
 		return $this->db->query($query)->result_array();
 	}
+
 
 	public function addPsikotest($name)
 	{
@@ -62,14 +64,8 @@ class Personalia_model extends CI_Model
 	public function psikotestData()
 	{
 
-		// $query = "SELECT * FROM question LEFT JOIN answer ON question.id_question = answer.id_question WHERE answer.status = 1 ORDER BY question.id_question DESC
-		// ";
-		// return $this->db->query($query)->result_array();
-
 		$query = $this->db->select('*')->from('question')->join('answer', 'question.id_question = answer.id_question')->where('answer.status', 1)->order_by('question.id_question', 'DESC')->get()->result_array();
 		return $query;
-
-
 	}
 
 	public function getPsikotestById($id)
@@ -146,4 +142,39 @@ class Personalia_model extends CI_Model
         return $this->db->update('job_vacancy', $data);
 	}
 
+
+	public function getJobApplicant($id)
+	{
+
+		$personal = $this->db->select('*')->from('personal')->where('id_personal', $id)->get()->row_array();
+
+		$allpersonal = $this->db->select('*')->from('personal')->where('id_personal', $personal['id_personal'])->get()->row_array();
+
+		$education = $this->db->select('*')->from('education')->where('email', $personal['email'])->get()->row_array();
+
+		$family_data = $this->db->select('*')->from('family_data')->where('email', $personal['email'])->get()->row_array();
+
+		$work_history = $this->db->select('*')->from('work_history')->where('email', $personal['email'])->get()->result_array();
+
+		$self_concept = $this->db->select('*')->from('self_concept')->where('email', $personal['email'])->get()->row_array();
+
+		$user_psikotest = $this->db->select('*')->from('user_psikotest')->where('email', $personal['email'])->get()->row_array();
+
+		$user_jobvacancy = $this->db->select('*')->from('user_jobvacancy')->where('email', $personal['email'])->get()->row_array();
+
+
+
+		$data['personal'] = $personal['id_personal'];
+		$data['allpersonal'] = $allpersonal;
+		$data['education'] = $education;
+		$data['family_data'] = $family_data;
+		$data['work_history'] = $work_history;
+		$data['self_concept'] = $self_concept;
+		$data['user_psikotest'] = $user_psikotest;
+		$data['user_jobvacancy'] = $user_jobvacancy;
+
+		return $data;
+
+
+	}
 }
