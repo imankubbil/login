@@ -17,7 +17,12 @@ class Admin extends CI_Controller
         $data['title'] = 'Dashboard';
         // untuk mengambil data dari session yang masuk
         $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
-        // echo 'Selamat Datang ' . $data['user']['name'];
+        
+        $data['data'] = $this->Admin_model->amount();
+
+        // echo json_encode($data);
+        // die();
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

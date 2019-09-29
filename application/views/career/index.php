@@ -9,7 +9,7 @@
                    <div class="row no-gutters mt-2">
                        <div class="col-md-4">
                         <div class="text-center">
-                            <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img" style="width:150px; height: 120px;">
+                            <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img" style="width:150px; height: 170px;">
                         </div>
                            
                            <table class="table mt-3">

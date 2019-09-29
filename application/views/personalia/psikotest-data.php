@@ -34,7 +34,7 @@
             <?php foreach ($data as $d) : ?>
               <tr>
                 <th scope="row"><?= $i; ?></th>
-                <td><?= $d['question']; ?></td>
+                <td class="text-justify" style="width: 450px; height:200px"><?= $d['question']; ?></td>
                 <td><?= $d['jawaban']; ?></td>
                 <td><?= $d['name']; ?></td>
                 <td><?= $d['date_created']; ?></td>

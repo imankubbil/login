@@ -13,7 +13,7 @@
            <div class="card mb-3 col-lg-6">
                <div class="row no-gutters">
                    <div class="col-md-4">
-                       <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img">
+                       <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img mt-2 mb-2" style="width: 150px; height: 200px;">
                    </div>
                    <div class="col-md-8">
                        <div class="card-body">

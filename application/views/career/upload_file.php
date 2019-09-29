@@ -28,7 +28,7 @@
                                    <div class="form-group col-md-6">
                                        <label for="foto_ijazah"><strong>File Scan Ijazah</strong></label>
                                        <div class="custom-file">
-                                         <input type="file" class="custom-file-input" id="foto_ijazah" name="foto_ijazah">
+                                         <input type="file" class="custom-file-input" id="foto_ijazah" name="foto_ijazah" accept=".png,.jpg,.jpeg">
                                          <label class="custom-file-label" for="image">Choose file</label>
                                          <small class="text-primary pl-3"><em>Upload file with Extension : Png/Jpg/Jpeg, Max:2MB</em></small>
                                          <?= form_error('foto_ijazah', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -42,7 +42,7 @@
                                    <div class="form-group col-md-6">
                                        <label for="foto_sertifikat"><strong>File Scan Sertifikat</strong></label>
                                        <div class="custom-file">
-                                         <input type="file" class="custom-file-input" id="foto_sertifikat" name="foto_sertifikat">
+                                         <input type="file" class="custom-file-input" id="foto_sertifikat" name="foto_sertifikat" accept=".png,.jpg,.jpeg">
                                          <label class="custom-file-label" for="image">Choose file</label>
                                          <small class="text-primary pl-3"><em>Upload file with Extension : Png/Jpg/Jpeg, Max:2MB</em></small>
                                          <?= form_error('foto_sertifikat', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -51,7 +51,7 @@
                                    <div class="form-group col-md-12">
                                        <label for="foto_transkrip"><strong>File Scan Transkrip Nilai</strong></label>
                                        <div class="custom-file">
-                                         <input type="file" class="custom-file-input" id="foto_transkrip" name="foto_transkrip_nilai">
+                                         <input type="file" class="custom-file-input" id="foto_transkrip" name="foto_transkrip_nilai" accept=".png,.jpg,.jpeg">
                                          <label class="custom-file-label" for="image">Choose file</label>
                                          <small class="text-primary pl-3"><em>Upload file with Extension : Png/Jpg/Jpeg, Max:2MB</em></small>
                                          <?= form_error('foto_transkrip', '<small class="text-danger pl-3">', '</small>'); ?>

@@ -4,7 +4,7 @@
 		<div class="card mb-3 col-lg">
 			<div class="row no-gutters">
 				<div class="col-md-4">
-					<img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
+					<img src="<?= base_url('assets/img/profile/') . $data['user']['image']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
 				</div>
 				<div class="col-md-8">
 					<div class="card-body">
@@ -188,7 +188,36 @@
 							<th>: <?= $data['self_concept']['kekurangan']; ?></th>
 						</tr>
 					</table>
+
+						<div class="row">
+							<div class="col-md-3">
+								<a href="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_ktp']; ?>" title="" >
+								<img src="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_ktp']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
+								<label class="mb-4 pl-4 mt-2">KTP</label>
+								</a>
+							</div>	
+							<div class="col-md-3">
+								<a href="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_ijazah']; ?>">
+								<img src="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_ijazah']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
+								<label class="mb-4 pl-4 mt-2">Ijazah</label>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_transkrip_nilai']; ?>">
+								<img src="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_transkrip_nilai']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
+								<label class="mb-4 pl-4 mt-2">Transkrip Nilai</label>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_sertifikat']; ?>">
+								<img src="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_sertifikat']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;" alt="belum upload">
+								<label class="mb-4 pl-4 mt-2"><?= $data['upload_file']['sertifikat']; ?></label>
+								</a>
+							</div>			
+						</div>
+
 					<a type="button" href="javascript: w=window.open('<?=base_url()?>print_laporan/detail_job_applicant/<?=$this->uri->segment(3)?>', 'newwindow', 'width=1300', 'height=650'); w.focus(); w.print();" title="Print Data" class="btn btn-primary btn-lg ml-4 mb-4"> <i class="fa fa-print"></i> Print</a>
+					
 					<a href="<?= base_url('personalia'); ?>" class="btn btn-warning btn-lg mb-4"><i class="fas fa-undo"></i> Back</a>
 				</div>
 			</div>

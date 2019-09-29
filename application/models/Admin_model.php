@@ -47,9 +47,19 @@ class Admin_model extends CI_Model
 		return $data;
 	}
 
+	public function amount()
+	{
+		$user = $this->db->get('user')->num_rows();
+		$product = $this->db->get('product')->num_rows();
+		$catalogue = $this->db->get('catalogue')->num_rows();
 
+		$data['user'] = $user;
+		$data['product'] = $product;
+		$data['catalogue'] = $catalogue;
 
+		return $data;
+	}
 
-
+	
 
 }

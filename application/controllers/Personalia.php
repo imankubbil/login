@@ -20,6 +20,8 @@ class Personalia extends CI_Controller
         $data['data'] = $this->Personalia_model->getData();
         // $data['data'] = $this->Personalia_model->getJob();
 
+        $data['amount'] = $this->Personalia_model->amount();
+
         // echo json_encode($data);
         // die();
         
@@ -284,5 +286,7 @@ class Personalia extends CI_Controller
             $this->load->view('personalia/detail-jobapplicant', $data);
             $this->load->view('templates/footer');
     }
+
+
 
 }

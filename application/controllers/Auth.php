@@ -54,7 +54,7 @@ class Auth extends CI_Controller
 						redirect('admin');
 					} else {
 						// diarahkan ke controller user
-						redirect('user');
+						redirect('career');
 					}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">

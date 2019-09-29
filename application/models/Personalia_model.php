@@ -5,7 +5,7 @@ class Personalia_model extends CI_Model
 {
 	public function getData()
 	{
-		$query = "SELECT personal.*, education.*, user_jobvacancy.*, user_psikotest.* FROM personal LEFT JOIN education ON personal.email = education.email LEFT JOIN user_psikotest ON education.email = user_psikotest.email LEFT JOIN user_jobvacancy ON personal.email = user_jobvacancy.email ORDER BY id_personal DESC
+		$query = "SELECT personal.*, education.*, user_jobvacancy.*, user.*, user_psikotest.* FROM personal LEFT JOIN education ON personal.email = education.email LEFT JOIN user_psikotest ON education.email = user_psikotest.email LEFT JOIN user_jobvacancy ON personal.email = user_jobvacancy.email LEFT JOIN user ON personal.email = user.email WHERE user.role_id !=1 ORDER BY id_personal DESC
 		";
 
 
@@ -162,6 +162,10 @@ class Personalia_model extends CI_Model
 
 		$user_jobvacancy = $this->db->select('*')->from('user_jobvacancy')->where('email', $personal['email'])->get()->row_array();
 
+		$upload_file = $this->db->select('*')->from('upload_file')->where('email', $personal['email'])->get()->row_array();
+
+		$user = $this->db->select('*')->from('user')->where('email', $personal['email'])->get()->row_array();
+
 
 
 		$data['personal'] = $personal['id_personal'];
@@ -172,9 +176,24 @@ class Personalia_model extends CI_Model
 		$data['self_concept'] = $self_concept;
 		$data['user_psikotest'] = $user_psikotest;
 		$data['user_jobvacancy'] = $user_jobvacancy;
+		$data['upload_file'] = $upload_file;
+		$data['user'] = $user;
+
 
 		return $data;
 
 
+	}
+
+	public function amount()
+	{
+		$user = $this->db->where('role_id>', 1)->get('user')->num_rows();
+		$user_psikotest = $this->db->where('nilai_psikotest>', 75)->get('user_psikotest')->num_rows();
+
+		$amount['user'] = $user;
+		$amount['user_psikotest'] = $user_psikotest;
+
+	
+		return $amount;
 	}
 }
