@@ -118,7 +118,7 @@
                                  </tr>
                              </table>
                              </div>
-                             <button class="btn btn-primary" title="apply" id="name" data-toggle="modal" data-target="#modal_lanjut_psikotest" <?php if($user_answer > 0) { echo "hidden";}?>>Apply and Send</button>
+                             <button class="btn btn-primary" title="apply" id="name" data-toggle="modal" data-target="#modal_lanjut_psikotest" <?php if ($cek_data == 6) { echo '';} else { echo 'hidden';} if($user_answer > 0) { echo "hidden";}?>>Apply and Send</button>
 
                          </div>
                      </div>

@@ -12,7 +12,7 @@
                <div class="form-group col-md-12">
                 <label for="peranyaan"><strong>Pertanyaan</strong></label>
 
-                <textarea class="form-control editor_jobvacancy" name="pertanyaan" id="pertanyaan" placeholder="Masukan pertanyaan" value="<?= set_value('pertanyaan'); ?>"></textarea><?= form_error('pertanyaan', '<small class="text-danger pl-3">', '</small>'); ?>
+                <textarea class="form-control" name="pertanyaan" id="pertanyaan" placeholder="Masukan pertanyaan" value="<?= set_value('pertanyaan'); ?>"></textarea><?= form_error('pertanyaan', '<small class="text-danger pl-3">', '</small>'); ?>
                 <br>
                 <div class="form-group row">
                   <div class="col-md-1">

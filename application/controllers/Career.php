@@ -26,6 +26,8 @@ class Career extends CI_Controller
         $data['user_answer'] = $this->db->get_where('user_answer', ['email' => $this->session->userdata('email')])->num_rows();
         $data['upload'] = $this->db->get_where('upload_file', ['email' => $this->session->userdata('email')])->num_rows();
 
+        $data['cek_data'] = $data['personal']+$data['education']+$data['work_history']+$data['family']+$data['concept']+$data['upload'];
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -420,10 +422,10 @@ class Career extends CI_Controller
             $data_insert = [
                 'email' => $this->input->post('email', true),
                 'sertifikat' => $this->input->post('sertifikat', true),
-                'foto_ktp' => $_FILES['foto_ktp']['name'],
-                'foto_ijazah' => $_FILES['foto_ijazah']['name'],
-                'foto_sertifikat' => $_FILES['foto_sertifikat']['name'],
-                'foto_transkrip_nilai' => $_FILES['foto_transkrip_nilai']['name']
+                'foto_ktp' => str_replace(' ', '_', $_FILES['foto_ktp']['name']),
+                'foto_ijazah' => str_replace(' ', '_', $_FILES['foto_ijazah']['name']),
+                'foto_sertifikat' => str_replace(' ', '_', $_FILES['foto_sertifikat']['name']),
+                'foto_transkrip_nilai' => str_replace(' ', '_', $_FILES['foto_transkrip_nilai']['name'])
             ];
 
             $file_name = $this->multiple_upload($_FILES['foto_ktp']['tmp_name']);

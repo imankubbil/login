@@ -4,7 +4,7 @@
 		<div class="card mb-3 col-lg">
 			<div class="row no-gutters">
 				<div class="col-md-4">
-					<img src="<?= base_url('assets/img/profile/') . $data['user']['image']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
+					<img src="<?= base_url('assets/img/profile/') . $data['user']['image']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 250px;">
 				</div>
 				<div class="col-md-8">
 					<div class="card-body">
@@ -191,26 +191,26 @@
 
 						<div class="row">
 							<div class="col-md-3">
-								<a href="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_ktp']; ?>" title="" >
-								<img src="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_ktp']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
+								<a href="<?= base_url('assets/img/upload/') . urlencode($data['upload_file']['foto_ktp']); ?>" title="" >
+								<img src="<?= base_url('assets/img/upload/') . urlencode($data['upload_file']['foto_ktp']); ?>" class="card-img mt-3 ml-4 img-fluid" style="height: 300px; width: 250px;">
 								<label class="mb-4 pl-4 mt-2">KTP</label>
 								</a>
 							</div>	
 							<div class="col-md-3">
-								<a href="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_ijazah']; ?>">
-								<img src="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_ijazah']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
+								<a href="<?= base_url('assets/img/upload/') . urlencode($data['upload_file']['foto_ijazah']); ?>">
+								<img src="<?= base_url('assets/img/upload/') . urlencode($data['upload_file']['foto_ijazah']); ?>" class="card-img mt-3 ml-4 img-fluid" style="height: 300px; width: 250px;">
 								<label class="mb-4 pl-4 mt-2">Ijazah</label>
 								</a>
 							</div>
 							<div class="col-md-3">
-								<a href="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_transkrip_nilai']; ?>">
-								<img src="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_transkrip_nilai']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;">
+								<a href="<?= base_url('assets/img/upload/') . urlencode($data['upload_file']['foto_transkrip_nilai']); ?>">
+								<img src="<?= base_url('assets/img/upload/') . urlencode($data['upload_file']['foto_transkrip_nilai']); ?>" class="card-img mt-3 ml-4 img-fluid" style="height: 300px; width: 250px;">
 								<label class="mb-4 pl-4 mt-2">Transkrip Nilai</label>
 								</a>
 							</div>
 							<div class="col-md-3">
-								<a href="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_sertifikat']; ?>">
-								<img src="<?= base_url('assets/img/upload/') . $data['upload_file']['foto_sertifikat']; ?>" class="card-img mt-3 ml-4" style="width: 200px; height: 200px;" alt="belum upload">
+								<a href="<?= base_url('assets/img/upload/') . urlencode($data['upload_file']['foto_sertifikat']); ?>">
+								<img src="<?= base_url('assets/img/upload/') . urlencode($data['upload_file']['foto_sertifikat']); ?>" class="card-img mt-3 ml-4 img-fluid" alt="belum upload" style="height: 300px; width: 250px;">
 								<label class="mb-4 pl-4 mt-2"><?= $data['upload_file']['sertifikat']; ?></label>
 								</a>
 							</div>			
