@@ -3,7 +3,7 @@
 
 		<div class="row t-right">
 			<div class="col-lg">
-			<h1 style="color:white;" class="float-left mt-4 pl-4">Career</h1>
+			<h1 style="color:white;" class="float-left mt-4 p-l-80">Career</h1>
 				<a href="<?= base_url('Auth'); ?>" class="btn btn-primary btn-lg m-t-30 m-r-30">SignUp/Login</a>
 			</div>
 		</div>

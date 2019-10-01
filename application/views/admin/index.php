@@ -3,7 +3,8 @@
 
            <!-- Page Heading -->
            <h1 class="h3 mb-4 text-gray-800 text-center"><?= $title; ?></h1>
-           	<div class="row">
+
+           	<div class="row justify-content-center">
            		<div class="col-xl-3 col-md-6 mb-4">
 	              <div class="card border-left-primary shadow h-100 py-2">
 	                <div class="card-body">
@@ -52,7 +53,20 @@
 	              </div>
 	            </div>
 
+           	</div>
 
+	        <div class="row justify-content-center">
+           		<div class="col-md-8">
+	           		<div class="card text-white bg-primary">
+	           			<div class="card-body">
+	           				<h1>Welcome!</h1>
+	           				<p>Hallo <strong class="text-warning"><?= $user['name'];?></strong>  , Selamat Datang di Sistem Informasi Personalia Selma By Informa</p>
+	           			</div>
+	           			
+	           		</div>
+	           		
+	           	</div>
+           		
            	</div>
 
 

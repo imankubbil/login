@@ -6,7 +6,7 @@
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-lg">
-						<h3 class="m-text5 t-center p-b-30">What is Selma??</h3>
+						<h3 class="m-text5 t-center p-b-30">What is Selma?</h3>
 						<p class="text-justify" style="color: black;"><strong>Selma By Informa adalah anak perusahaan Kawan Lama Group yang bergerak dibidang retail furnishing dan perabot rumah lainnya yang baru dibuka pada tahun 2017, sasaran pasar Selma adalah kalangan menengah kebawah untuk merangkul konsumen yang ingin barang berkualitas dengan harga terjangkau. Toko pertama Selma sendiri berada di Pusat Grosir Cililitan Jakarta Timur. Namun kedepannya Selma By Informa berencana membuka banyak cabang yang tersebar di seluruh wilayah Indonesia agar lebih dekat dengan konsumen.</strong></p>
 
 						<h3 class="m-text5 t-center p-b-30 p-t-30">Visi</h3>

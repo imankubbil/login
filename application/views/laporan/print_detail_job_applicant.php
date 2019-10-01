@@ -8,10 +8,16 @@
 
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
+
 </head>
 <body>
     <header class="clearfix">
-        <h1 align="center">Report Detail Job Applicant</h1>
+        <div class="col-lg mb-3">
+            <div class="row justify-content-center mt-4">
+                <img src="<?= base_url('assets/img/logo/logo.jpg');?>" style="width: 120px; height: 50px;">
+                 <h1 class="mt-1 pl-2">Laporan Detail Pelamar Kerja</h1>
+            </div>
+        </div>
     </header>
     <main>
     <div class="container-fluid">
