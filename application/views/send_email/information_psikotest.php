@@ -99,7 +99,7 @@
                               <td align="center" valign="top" style="font-size:18px">
                                 <table border="0" cellpadding="12" cellspacing="0" width="523" id="emailBodyIndonesia">
                                   <td>
-                                    Dear <b>"<?=$email?>"</b>
+                                    Dear <b>"Lekha Sholehati"</b>
                                   </td>
                                   </tr>
                                   
@@ -122,17 +122,17 @@
                                     </tr>
                                   <tr>
                                     <td align="center">
-                                      Hari / tanggal : 
+                                      Hari / tanggal : Rabu, 02-October-2019
                                     </td>
                                   </tr>
                                   <tr>
                                     <td align="center">
-                                      Tempat : 
+                                      Tempat : Kantor Selma
                                     </td>
                                   </tr>
                                   <tr>
                                     <td align="center">
-                                      Pukul : 
+                                      Pukul : 10:00
                                     </td>
                                   </tr>
                                   <tr>

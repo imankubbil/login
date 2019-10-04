@@ -40,7 +40,7 @@
 <?php if(empty($waktu)){ $waktu = "0"; }?>
 
 <!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.plugin.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.countdown.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -52,7 +52,8 @@
 <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
 <script src="<?= base_url('assets/'); ?>js/boostrap-datepicker.js"></script>
-<script src="<?= base_url('assets/'); ?>js/bootstrap-datetimepicker.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/moment.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 <script src="<?= base_url('assets/'); ?>swal/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/script.js"></script>
 
@@ -108,18 +109,19 @@
   $(document).ready( function () {
     
     $('#tabel_data_pelamar').DataTable();
-    // $('.date_time_schedule').datetimepicker({
-    //   language : 'en'
-    // });
-    // $('#datetimepicker1').datetimepicker({
-    //   language: 'pt-BR'
-    // })
-
+    $('#datetimepicker').datetimepicker();
     tinymce.init({
       selector:'.editor_jobvacancy',
       theme: 'modern',
       height: 200
-    })
+    });
+
+    $('#send_email').on('click', function() {
+      $('#modal_send_email').modal('show');
+        data_email = $(this).data('email');
+        data_job_apply = $(this).data('job_applay');
+      $('#email').val(data_email);
+      });
   });
 
   $('.custom-file-input').on('change', function() {
@@ -185,10 +187,10 @@
       });
 
     $("#datepickerMonth").datepicker( {
-   format: 'MM yyyy',
-                viewMode: "months",
-                minViewMode: "months",
-                autoClose: true
+      format: 'MM yyyy',
+      viewMode: "months",
+      minViewMode: "months",
+      autoClose: true
     });
 
 

@@ -71,8 +71,12 @@
                          <td><?= $d['alamat']; ?></td>
                          <td><?= $keterangan = ($d['nilai_psikotest'] >= 75) ? 'Lulus Psikotest' : 'Tidak Lulus'; ?></td>
                          <td class="text-center">
-                           <a href="<?= base_url(); ?>Personalia/detailJobApplicant/<?= $d['id_personal']; ?>" class="badge badge-success">Detail</a>
-                          <a href="#modal_send_email" class="badge badge-danger" data-toggle="modal"> Send Email </a>
+                          <a href="<?= base_url(); ?>Personalia/detailJobApplicant/<?= $d['id_personal']; ?>" class="badge badge-success">Detail</a>
+                          <?php if ($d['email'] != NULL && $d['id_jobvacancy'] != NULL) : ?>
+                            <a href="javascript:void(0)" id="send_email" data-email="<?=$d['email'];?>" data-job_apply="<?=getJobRequire($d['id_jobvacancy'])?>" class="badge badge-danger" data-toggle="modal"> Send Email </a>
+                          <?php else :?>
+                            <label class="badge badge-secondary" disabled>Send Email</label>
+                          <?php endif;?>
                            <!-- <?=form_open('auth/informationPsikotest');?>
                            <input type="text" name="email" value="<?=$d['email']?>" hidden>
                            <button type="submit" class="badge badge-danger">Send Email</button>
@@ -99,24 +103,29 @@
                            <span aria-hidden="true">&times;</span>
                        </button>
                    </div>
-                   <form action="<?= base_url('personalia/set_data_schedule'); ?>" method="post">
+                    <?=form_open('personalia/set_data_schedule'); ?>
                        <div class="modal-body">
+                          <input type="hidden" name="email" id="email">
+                          <input type="hidden" name="job_apply" id="job_apply">
                            <div class="form-group">
                               <label for="">Hari, Tanggal, Pukul</label>
-                              <div class="date_time_schedule">
-                                <input type="datetime-local" class="form-control" name="date_time_schedule" data-format="dd-mm-YYYY hh:mm:ss"><span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+                              <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+                                  <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker" required>
+                                  <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                  </div>
                               </div>
                            </div>
                            <div class="form-group">
                               <label for="">Lokasi</label>
-                               <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Lokasi">
+                               <input type="text" class="form-control" id="lokasi" name="lokasi" placeholder="Lokasi" required>
                            </div>
                        </div>
                        <div class="modal-footer">
                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                            <button type="submit" class="btn btn-primary">Add</button>
                        </div>
-                   </form>
+                    <?=form_close()?>
                </div>
            </div>
        </div> 

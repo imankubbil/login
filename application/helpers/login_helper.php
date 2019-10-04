@@ -89,3 +89,10 @@ function getJobRequire($id_jobvacancy)
     $result = $CI->db->get_where('job_vacancy', ['id_jobvacancy' => $id_jobvacancy])->row_array();
     return $result['job_require'];
 }
+
+function getIdJobvacancy($job_require)
+{
+    $CI =& get_instance();
+    $result = $CI->db->get_where('job_vacancy', ['job_require' => $job_require])->row_array();
+    return $result['id_jobvacancy'];
+}

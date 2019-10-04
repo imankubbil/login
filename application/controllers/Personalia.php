@@ -287,6 +287,21 @@ class Personalia extends CI_Controller
             $this->load->view('templates/footer');
     }
 
+    public function set_data_schedule()
+    {
+        $data = [
+            'email' => $this->input->post('email'),
+            'id_jobvacancy' => getIdJobvacancy($this->input->post('job_apply')),
+            'datetime' => $this->input->post('datetime'),
+            'location' => $this->input->post('lokasi')
+        ];
 
-
+        $result = $this->db->insert('user_data_schedule', $data);
+        if ($result > 0) {
+            $this->session->set_flashdata('message', 'Has Been Sent');
+        } else {
+            $this->session->set_flashdata('message', 'Has Not Been Sent');
+        }
+        redirect('personalia');
+    }
 }

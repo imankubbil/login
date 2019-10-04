@@ -19,7 +19,8 @@
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>css/bootstrap-datepicker.css" rel="stylesheet">
-    <link href="<?= base_url('assets/'); ?>css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
     <link href="<?= base_url('assets/'); ?>css/dataTables/datatables.min.css" rel="stylesheet">
 </head>
 
