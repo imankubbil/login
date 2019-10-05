@@ -17,6 +17,7 @@
                                 </div>
                                 <?= $this->session->flashdata('message'); ?>
                                 <form class="user" method="post" action="<?= base_url('auth'); ?>">
+                                    <input type="hidden" name="id_jobvacancy" value="<?=$id_jobvacancy?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Enter Email Address..." value="<?= set_value('email'); ?>">
                                         <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>

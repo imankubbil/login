@@ -11,20 +11,25 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
+		$id_jobvacancy = $this->input->post('id_jobvacancy');
+
 		if ($this->session->userdata('email')) {
 			redirect('user');
 		}
 
+		$this->form_validation->set_rules('id_jobvacancy', 'JobVacancy', 'trim');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 		if ($this->form_validation->run() == false) {
 			$data['title'] = 'Login Page';
+			$data['id_jobvacancy'] = $id_jobvacancy;
 			$this->load->view('templates/auth_header', $data);
 			$this->load->view('auth/login');
 			$this->load->view('templates/auth_footer');
 		} else {
 			// validasinya lolos pindah ke function _login(adalah function privat)
+			
 			$this->_login();
 		}
 	}
@@ -33,6 +38,17 @@ class Auth extends CI_Controller
 	{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
+		$id_jobvacancy = $this->input->post('id_jobvacancy');
+		if ($id_jobvacancy != NULL || $id_jobvacancy != "") {
+			$data_insert = [
+				'id_jobvacancy'	=> $id_jobvacancy,
+				'email'			=> $email,
+			];
+			$cek_data = $this->db->get_where('user_jobvacancy', ['email' => $email])->num_rows();
+			if ($cek_data != 1) {
+				$insert_user_job_apply = $this->db->insert('user_jobvacancy', $data_insert);
+			}
+		}
 
 		// pencarian email pada database
 		$user = $this->db->get_where('user', array("email" => $email))->row_array();
@@ -132,7 +148,7 @@ class Auth extends CI_Controller
 			$this->db->insert('user_token', $user_token);
 
 			// untuk aktivasi
-			$this->_sendEmail($token, 'verify');
+			$this->_sendEmail($token, $email, 'verify');
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
 			Congratulation!Please activate your account</div>');
@@ -140,7 +156,7 @@ class Auth extends CI_Controller
 		}
 	}
 
-	private function _sendEmail($token, $type)
+	private function _sendEmail($token, $email, $type)
 	{
 		$config = array(
 			'protocol' => 'smtp',
@@ -157,18 +173,20 @@ class Auth extends CI_Controller
 		$this->email->initialize($config);
 
 		$this->email->from('no_reply@selma.com', 'Selma By Informa');
-		$this->email->to($this->input->post('email'));
+		$this->email->to($email);
 
 		if ($type == 'verify') {
 			$this->email->subject('Account Verification');
-			$this->email->message('Click this link to verify your account : <a href="'. base_url() .'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+			$this->email->message('Click this link to verify your account : <a href="'. base_url() .'auth/verify?email=' . $email . '&token=' . urlencode($token) . '">Activate</a>');
 		} else if ($type == 'forgot') {
 			$this->email->subject('Reset Password');
-			$this->email->message('Click this link to reset your password : <a href="'. base_url() .'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+			$this->email->message('Click this link to reset your password : <a href="'. base_url() .'auth/resetpassword?email=' . $email . '&token=' . urlencode($token) . '">Reset Password</a>');
 		} else if($type == 'job_application') {
 			$this->email->subject('Information Psikotest');
-			$data_information['email'] = $this->input->post('email', TRUE);
+			$data_user = $this->db->select('user.name, user_data_schedule.datetime, user_data_schedule.location')->from('user')->join('user_data_schedule', 'user.email = user_data_schedule.email', 'left')->where('user_data_schedule.email', $email)->get()->row_array();
+			$data_information['email'] = $email;
 			$data_information['token'] = $token;
+			$data_information['data_user'] = $data_user;
 			$content = $this->load->view('send_email/information_psikotest', $data_information, TRUE);
 			$this->email->message($content);
 		}
@@ -259,7 +277,7 @@ class Auth extends CI_Controller
 					'date_created' => time()
 				);
 				$this->db->insert('user_token', $user_token);
-				$this->_sendEmail($token, 'forgot');
+				$this->_sendEmail($token, $email, 'forgot');
 
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
 			Please check your email for reset your password!</div>');
@@ -330,14 +348,11 @@ class Auth extends CI_Controller
 
 	public function informationPsikotest()
 	{
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-
-		if ($this->form_validation->run() == false) {
+		$email = urldecode($this->uri->segment(3));
+		if ($email == NULL || $email == "") {
 			redirect('personalia');
 		} else {
-			$email = $this->input->post('email');
 			$user = $this->db->get_where('user', array('email' => $email, 'is_active' => 1))->row_array();
-
 			if ($user) {
 				$token = md5(random_string('numeric', 16));
 				$user_token = array(
@@ -345,8 +360,9 @@ class Auth extends CI_Controller
 					'token' => $token,
 					'date_created' => time()
 				);
+
 				$this->db->insert('user_token', $user_token);
-				$this->_sendEmail($token, 'job_application');
+				$this->_sendEmail($token, $email, 'job_application');
 
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
 			Has been send email</div>');

@@ -98,8 +98,9 @@
                             <tr>
                               <td align="center" valign="top" style="font-size:18px">
                                 <table border="0" cellpadding="12" cellspacing="0" width="523" id="emailBodyIndonesia">
+                                  <tr>
                                   <td>
-                                    Dear <b>"Lekha Sholehati"</b>
+                                    Dear <b>"<?=$data_user['name']?>"</b>
                                   </td>
                                   </tr>
                                   
@@ -122,17 +123,18 @@
                                     </tr>
                                   <tr>
                                     <td align="center">
-                                      Hari / tanggal : Rabu, 02-October-2019
+                                      <?php $explode = explode(' ', $data_user['datetime']);?>
+                                      Hari / tanggal : <?=date('d F Y', strtotime($explode[0]))?>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td align="center">
-                                      Tempat : Kantor Selma
+                                      Tempat : <?=$data_user['location']?>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td align="center">
-                                      Pukul : 10:00
+                                      Pukul : <?=$explode[1]?> <?=$explode[2]?>
                                     </td>
                                   </tr>
                                   <tr>

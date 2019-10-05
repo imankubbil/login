@@ -302,6 +302,6 @@ class Personalia extends CI_Controller
         } else {
             $this->session->set_flashdata('message', 'Has Not Been Sent');
         }
-        redirect('personalia');
+        redirect(base_url().'auth/informationPsikotest/'.urlencode($data['email']));
     }
 }

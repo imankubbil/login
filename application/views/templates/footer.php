@@ -119,8 +119,9 @@
     $('#send_email').on('click', function() {
       $('#modal_send_email').modal('show');
         data_email = $(this).data('email');
-        data_job_apply = $(this).data('job_applay');
-      $('#email').val(data_email);
+        data_job_apply = $(this).data('job_apply');
+        $('#email').val(data_email);
+        $('#job_apply').val(data_job_apply);
       });
   });
 

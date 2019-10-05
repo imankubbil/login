@@ -110,7 +110,7 @@
                            <div class="form-group">
                               <label for="">Hari, Tanggal, Pukul</label>
                               <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-                                  <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker" required>
+                                  <input type="text" class="form-control datetimepicker-input" name="datetime" data-target="#datetimepicker" required>
                                   <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
                                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                   </div>

@@ -71,5 +71,14 @@ class Frontend extends CI_Controller
 
     }
 
+    public function job_apply()
+    {
+        $id_jobvacancy = $this->uri->segment(3);
 
+        if ($this->session->userdata('email')) {
+			redirect('user');
+        }
+
+        redirect('auth', $id_jobvacancy);
+    }
 }

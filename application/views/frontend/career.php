@@ -36,7 +36,12 @@
 									<td><h3 style="color:black"><?= $j["deskripsi"]; ?></h3></td>
 								</tr>
 								<tr>
-									<td><a href="<?= base_url('Auth'); ?>" class="btn btn-primary m-l-4 m-t-4 m-b-4 ">Apply Job</a></h5></td>
+									<td>
+										<?=form_open('auth')?>
+											<input type="hidden" name="id_jobvacancy" value="<?=$j['id_jobvacancy']?>">
+											<button type="submit" class="btn btn-primary m-l-4 m-t-4 m-b-4 ">Apply Job</button>
+										<?=form_close()?>
+									</td>
 								</tr>
 							</tbody>
 						</table>
