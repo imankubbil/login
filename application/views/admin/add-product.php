@@ -31,8 +31,8 @@
        					</div>
 
        					<div class="form-group col-md-4">
-       						<button type="submit" class="btn btn-primary" id="btn_personal"><i class="far fa-paper-plane"></i> Send Data</button>
-       						<a class="btn btn-warning" href="<?= base_url('Admin/product'); ?>" role="button"><i class="fas fa-undo"></i> Back</a>
+       						<button type="submit" class="btn btn-primary btn-lg" id="btn_personal"><i class="far fa-paper-plane"></i> Send Data</button>
+       						<a class="btn btn-warning btn-lg" href="<?= base_url('Admin/product'); ?>" role="button"><i class="fas fa-undo"></i> Back</a>
        					</div>
        				</form>
 

@@ -24,7 +24,7 @@
                                    			<th>#</th>
                                    			<th>Product Name</th>
                                    			<th>Product Picture</th>
-                                                        <th>Created By</th>
+                                        <th>Created By</th>
                                    			<th>Description</th>
                                    			<th>Action</th>
                                    		</tr>
@@ -35,28 +35,26 @@
                                    	</div>
                      <?php $i = 1; ?>
                      <?php foreach ($data as $d) : ?>
-			<tr>
-				<th scope="row"><?= $i; ?></th>
-				<td><?= $d['product_name']; ?></td>
-				<td>
-					<a href="<?= base_url('assets/img/product/') . $d['image']; ?>" title="">
-						<img src="<?= base_url('assets/img/product/') . $d['image']; ?>" class="img-thumbnail" style="height: 150px; width: 150px;">
-					</a>
-				</td>
+                    			<tr>
+                    				<th scope="row"><?= $i; ?></th>
+                    				<td><?= $d['product_name']; ?></td>
+                    				<td>
+                    					<a href="<?= base_url('assets/img/product/') . $d['image']; ?>" title="">
+                    						<img src="<?= base_url('assets/img/product/') . $d['image']; ?>" class="img-thumbnail" style="height: 150px; width: 150px;">
+                    					</a>
+                    				</td>
                             <td><?= $d['created']; ?></td>
-				<td class="text-justify" style="width: 300px; height:300px"><?= $d['deskripsi']; ?></td>
+                    				<td class="text-justify" style="width: 300px; height:300px"><?= $d['deskripsi']; ?></td>
+                    				<td>
+                    					<a href="<?= base_url(); ?>Admin/editProduct/<?= $d['id_product']; ?>" class="badge badge-warning">Edit</a>              
+                    					<a href="<?= base_url(); ?>Admin/deleteProduct/<?= $d['id_product']; ?>" class="badge badge-danger tombol-hapus">Delete</a>
 
-
-				<td>
-					<a href="<?= base_url(); ?>Admin/editProduct/<?= $d['id_product']; ?>" class="badge badge-warning">Edit</a>              
-					<a href="<?= base_url(); ?>Admin/deleteProduct/<?= $d['id_product']; ?>" class="badge badge-danger tombol-hapus">Delete</a>
-
-				</td>
-			</tr>
-			<?php $i++ ?>
-		<?php endforeach; ?>
-	</tbody>
-</table>
+                    				</td>
+                    			</tr>
+                  			<?php $i++ ?>
+                  		<?php endforeach; ?>
+                    	</tbody>
+                    </table>
 </div>
 
 
