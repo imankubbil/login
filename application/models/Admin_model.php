@@ -60,6 +60,16 @@ class Admin_model extends CI_Model
 		return $data;
 	}
 
-	
+	public function getUser()
+	{
+		$data = $this->db->get('user')->result_array();
+		return $data;
+	}
+
+	public function getUserById($id)
+	{
+		$data = $this->db->select('*')->from('user')->where('id', $id)->get()->row_array();
+		return $data;
+	}
 
 }

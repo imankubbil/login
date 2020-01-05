@@ -390,4 +390,75 @@ class Admin extends CI_Controller
             }
             redirect('admin/katalog');   
     }
+
+    public function usermanagement()
+    {
+        $data['title'] = 'User Management';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+
+        $data['data'] = $this->Admin_model->getUser();
+
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/user-management', $data);
+        $this->load->view('templates/footer');
+
+    }
+
+    public function editusermanagement()
+    {
+        $id = $this->uri->segment(3);
+        $data['title'] = 'Edit User Management';
+        // untuk mengambil data dari session yang masuk
+        $data['user'] = $this->db->get_where('user', array("email" => $this->session->userdata('email')))->row_array();
+        $data['data'] = $this->Admin_model->getUserById($id);
+
+        if(isset($_POST['submit']))
+        {
+            
+            $data = [
+                'role_id'=> $this->input->post('role_id', true),
+                'is_active' => $this->input->post('is_active', true)
+            ];
+            $id = $this->input->post('id', true);
+            $this->db->where('id', $id);
+            $result = $this->db->update('user', $data);
+            if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Updated');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Updated');
+            }
+            redirect('admin/usermanagement');
+        }else{
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit-user-management', $data);
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function deleteUserManagement()
+    {
+        $id = $this->uri->segment(3);
+        
+        $this->db->where('id', $id);
+        $result = $this->db->delete('user');
+        if ($result > 0) {
+                $this->session->set_flashdata('message', 'Has Been Deleted');
+            } else {
+                $this->session->set_flashdata('message', 'Has Not Been Deleted');
+            }
+            redirect('admin/usermanagement');
+
+    }
+
+
+
+
+
+
 }
